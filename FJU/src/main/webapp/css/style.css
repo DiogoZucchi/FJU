@@ -1,0 +1,14 @@
+.formulario-corpo {
+	border-bottom: 1px solid #e5e5e5;
+	border-top: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	width: 66%;
+	height: 873px;
+	margin: 60px auto 100px auto;
+}
+
+.formulario-corpo .col-sm-5 {
+	margin-left: 141px;
+    width: 620px;
+}

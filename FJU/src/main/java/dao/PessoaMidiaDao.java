@@ -1,77 +1,73 @@
 package dao;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
-import model.Usuario;
 
-public class UsuarioDao {
-	
+public class PessoaMidiaDao {
 	private EntityManager manager;
 	
-	public void inserir(Usuario usuario) {
+	public void inserir(PessoaMidiaDao pessoa) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 	
 		try {
 			manager.getTransaction().begin();
-			manager.persist(usuario);
+			manager.persist(pessoa);
 			manager.getTransaction().commit();
 		} finally {
 			manager.close();
 		}
 	}
 	
-	public void remover(Usuario usuario){
+	public void remover(PessoaMidiaDao pessoa){
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
 			manager.getTransaction().begin();
-			manager.remove(usuario);
+			manager.remove(pessoa);
 			manager.getTransaction().commit();
 		} finally {
 			manager.close();
 		}	
 	}
 	
-	public void alterar(Usuario usuario) {
+	public void alterar(PessoaMidiaDao pessoa) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
 			manager.getTransaction().begin();
-			manager.merge(usuario);
+			manager.merge(pessoa);
 			manager.getTransaction().commit();
 		} finally {
 			manager.close();
 		}
 	}
 	
-	public Usuario listarUm(Usuario u) {
+	/*public PessoaMidiaDao listarUm(PessoaMidiaDao u) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		ArrayList<PessoaMidiaDao> PessoaMidiaDaos = new ArrayList<PessoaMidiaDao>();
 		try {
-			usuarios = listarTodos();
-			for (Usuario usuario : usuarios) {
-				if((usuario.getLogin().equalsIgnoreCase(u.getLogin())) && (usuario.getPassword().equalsIgnoreCase(u.getPassword()))){
+			PessoaMidiaDaos = listarTodos();
+			for (PessoaMidiaDao PessoaMidiaDao : PessoaMidiaDaos) {
+				if((PessoaMidiaDao.getLogin().equalsIgnoreCase(u.getLogin())) && (PessoaMidiaDao.getPassword().equalsIgnoreCase(u.getPassword()))){
 					System.out.println("Ee");
-					return usuario;
+					return PessoaMidiaDao;
 				}
 			}
 			return null;
 		} finally {
 			manager.close();
 		}
-	}
+	}*/
 	
-	public ArrayList<Usuario> listarTodos() {
+	public ArrayList<PessoaMidiaDao> listarTodos() {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
-			TypedQuery<Usuario> consulta = manager.createQuery("SELECT id,login,password FROM Usuario", Usuario.class);
-			return (ArrayList<Usuario>) consulta.getResultList();
+			TypedQuery<PessoaMidiaDao> consulta = manager.createQuery("SELECT id,login,password FROM PessoaMidiaDao", PessoaMidiaDao.class);
+			return (ArrayList<PessoaMidiaDao>) consulta.getResultList();
 		} finally {
 			manager.close();
 		}

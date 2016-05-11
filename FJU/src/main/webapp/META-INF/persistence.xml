@@ -8,6 +8,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<properties>
+		
 			<!-- Conexão com o banco de dados -->
 			<property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/universo" />
 			<property name="hibernate.connection.user" value="postgres" />
@@ -20,8 +21,6 @@
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format.sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-
-
 
 		</properties>
 

@@ -24,30 +24,35 @@ public class Teste {
 //		trx.begin();
 		
 		manager.getTransaction().begin();
-		
+		System.out.println("wawdaadad");
 		
 		/*SessionFactory fabrica = new Configuration().configure().buildSessionFactory();
 		Session sessao = fabrica.openSession();
 		Transaction txAluno = sessao.beginTransaction();
 		*/
 		
-		Aluno aluno = manager.find(Aluno.class, (long)2);
+		/*Aluno aluno = manager.find(Aluno.class, (long)2);
 		System.out.println(aluno.getDescricao());
-		manager.remove(aluno);
+		manager.remove(aluno);*/
 		
-//		Sala sala = new Sala();
-//		sala.setDescricao("Sala");
-//		
-//		Aluno aluno = new Aluno();
-//		aluno.setDescricao("Rafael21");
-//		aluno.setSala(sala);
-//		
-//		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-//		alunos.add(aluno);
-//
-//		sala.setAlunos(alunos);
+		/*		
+		Estado estado = new Estado();
+		Bloco bloco = new Bloco();
+		Cidade cidade = new Cidade();*/
+		
+		Sala sala = new Sala();
+		sala.setDescricao("Sala");
+		
+		Aluno aluno = new Aluno();
+		aluno.setDescricao("Rafael21");
+		aluno.setSala(sala);
+		
+		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
+		alunos.add(aluno);
 
-//		manager.persist(sala);
+		sala.setAlunos(alunos);
+
+		manager.persist(sala);
 		
 		manager.getTransaction().commit();
 		manager.close();

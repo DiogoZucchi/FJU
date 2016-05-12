@@ -6,7 +6,7 @@
 	<persistence-unit name="teste">
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
+		
 		<properties>
 		
 			<!-- Conexão com o banco de dados -->

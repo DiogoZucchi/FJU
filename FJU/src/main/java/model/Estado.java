@@ -32,11 +32,5 @@ public class Estado {
 		this.nome = nome;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="estado")
-	public ArrayList<Bloco> getListaBloco() {
-		return listaBloco;
-	}
-	public void setListaBloco(ArrayList<Bloco> listaBloco) {
-		this.listaBloco = listaBloco;
-	}
+	
 }

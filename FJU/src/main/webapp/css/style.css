@@ -1,3 +1,7 @@
+body {
+  background-color: #eee;
+}
+
 .formulario-corpo {
 	border-bottom: 1px solid #e5e5e5;
 	border-top: 1px solid #e5e5e5;
@@ -13,6 +17,11 @@
     width: 620px;
 }
 
-.teste {
-	margin-bottom: 5px;
+.ui-panelgrid>*>tr,
+.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
+li: hover {
+  color: #ff0000;
 }

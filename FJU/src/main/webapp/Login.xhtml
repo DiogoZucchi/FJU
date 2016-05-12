@@ -26,11 +26,11 @@
       <h:form class="form-signin">
       	<p:messages id="messages"/>
       	
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <h:inputText value="#{usuarioMB.usuario.login}" class="form-control teste" required="true" requiredMessage="Campo obrigatório"/>
+        <h2 class="form-signin-heading">Entrar</h2>
+        <h:inputText value="#{usuarioMB.usuario.login}" class="form-control teste" required="true" requiredMessage="Campo obrigatório" pt:placeholder="adw"/>
         <h:inputSecret value="#{usuarioMB.usuario.password}" autocomplete="false" class="form-control teste" required="true" requiredMessage="Campo obrigatório"/>
 
-        <h:commandButton class="btn btn-lg btn-primary btn-block" value="Logar" title="Clique aqui para Cadastrar." action="#{usuarioMB.enviar}"/>
+        <h:commandLink class="btn btn-lg btn-primary btn-block" value="Logar" title="Clique aqui para Cadastrar." action="#{usuarioMB.enviar}"/>
       </h:form>
 
     </div> 

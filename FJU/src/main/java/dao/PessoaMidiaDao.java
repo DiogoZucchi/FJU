@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
+import model.PessoaMidia;
+
 
 public class PessoaMidiaDao {
 	private EntityManager manager;
@@ -45,22 +47,16 @@ public class PessoaMidiaDao {
 		}
 	}
 	
-	/*public PessoaMidiaDao listarUm(PessoaMidiaDao u) {
+	public PessoaMidia listarUm(int id) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
-		ArrayList<PessoaMidiaDao> PessoaMidiaDaos = new ArrayList<PessoaMidiaDao>();
 		try {
-			PessoaMidiaDaos = listarTodos();
-			for (PessoaMidiaDao PessoaMidiaDao : PessoaMidiaDaos) {
-				if((PessoaMidiaDao.getLogin().equalsIgnoreCase(u.getLogin())) && (PessoaMidiaDao.getPassword().equalsIgnoreCase(u.getPassword()))){
-					System.out.println("Ee");
-					return PessoaMidiaDao;
-				}
-			}
+			return manager.find(PessoaMidia.class, id);
+		}catch(Exception e){
 			return null;
 		} finally {
 			manager.close();
 		}
-	}*/
+	}
 	
 	public ArrayList<PessoaMidiaDao> listarTodos() {
 		manager = EntityManagerProvider.getEntityManagerFactory();

@@ -47,11 +47,5 @@ public class Bloco {
 		this.estado = estado;
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="bloco")
-	public ArrayList<Cidade> getListaCidade() {
-		return listaCidade;
-	}
-	public void setListaCidade(ArrayList<Cidade> listaCidade) {
-		this.listaCidade = listaCidade;
-	}
+
 }

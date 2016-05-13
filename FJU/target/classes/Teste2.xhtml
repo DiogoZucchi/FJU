@@ -4,41 +4,60 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:opt="http://primefaces.prime.com.tr/optimus"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all"/>
-	<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"	media="all" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+	
+    <style type="text/css">
+       .ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd{
+            border: none;
+       }
+    </style>
+		
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#bt1").click(function(event){
+				$("#bt1").addClass("btn-primary");   
+				$("#bt2").removeClass("btn-primary");
+			});
+			$("#bt2").click(function(event){
+				$("#bt1").removeClass("btn-primary");   
+				$("#bt2").addClass("btn-primary");
+			});
+		});
+		
+	</script>
+	
 </h:head>
-<body>
-	<h:form>  
-    <p:growl id="messages"/>
- 
-    <p:menubar styleClass="navbar navbar-inverse navbar-fixed-top">
+
+
+
+<h:body>
     
-        <p:menuitem value="FJU" style="font-size: 25px"/>
- 
+<h:form>  
+    <p:growl id="messages"/>
+    
+ 	<p:menubar style="background:#363636" styleClass="navbar navbar-fixed-top">
+ 	
+        <p:menuitem value="FJU" style="font-size: 25px;"/>
  
         <f:facet name="options">
-            <p:menuButton value="Diogo Zucchi" style="margin-right:10px; margin-top:10px">
+            <p:menuButton value="Diogo Zucchi" style="margin-right:10px; margin-top:10px;">
 		        <p:menuitem value="Sair" actionListener="#{menuView.save}" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
 		    </p:menuButton>
         </f:facet>
     </p:menubar>
     
-    <p:layout style="min-width:400px;min-height:700px;margin-top:80px" >
-	    <p:layoutUnit position="west" resizable="true" size="300" minSize="40" maxSize="200">
-	        <h:commandLink value="Cadastrar" class="btn btn-block" />
-	        <h:commandLink value="Usuários" class="btn btn-lg btn-primary btn-block" />
-	        
-	    </p:layoutUnit>
-	 
-	    <p:layoutUnit position="center">
-	        Center
-	    </p:layoutUnit>
+    
+    <p:layout style="min-height:700px;" styleClass="col-md-4">
+	    <p:layoutUnit position="center"/>
+	</p:layout>
+	
+	<p:layout style="min-height:700px;" styleClass="col-md-8">
+	    <p:layoutUnit position="center"/>
 	</p:layout>
 
 </h:form>
-</body>
+</h:body>
 </html>

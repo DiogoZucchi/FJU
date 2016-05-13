@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:opt="http://primefaces.prime.com.tr/optimus"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+</h:head>
+	
+<h:body>
+	
+	<h:form>
+		<p:messages id="messages"/>
+		<p:panelGrid columns="2">
+		
+			<h:outputLabel value="Nome"/>
+			<p:inputText id="nome" value="" label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório."/>
+			
+			<h:outputLabel value="Nascimento" />
+			<p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" showOn="button" />
+			
+			<h:outputLabel value="Sexo"/>
+			<h:selectOneRadio value="">
+				<f:selectItem itemValue="M" itemLabel="Masculino" />
+				<f:selectItem itemValue="F" itemLabel="Feminino"/>
+			</h:selectOneRadio>
+		
+		</p:panelGrid>
+	</h:form>
+	
+</h:body>
+</html>

@@ -3,16 +3,17 @@ package model;
 import java.util.Date;
 
 public class Pessoa {
+	private int codigo;
 	private String nome;
 	private Date dtNasc;
 	private char sexo;
+	private int cep;
 	private Estado estado;
 	private Cidade cidade;
-	private DadosEspirituais dadosEspirituais;
-	private Bloco bloco;
-	private int codigo;
 	private String endereco;
 	private int numEnd;
+	private DadosEspirituais dadosEspirituais;
+	private Bloco bloco;
 	private String bairro;
 	private String telefone;
 	private String celular;
@@ -23,6 +24,14 @@ public class Pessoa {
 	private String idiomas;
 	private Date dataDoCadastro;
 
+
+	
+	public int getCep() {
+		return cep;
+	}
+	public void setCep(int cep) {
+		this.cep = cep;
+	}
 	public DadosEspirituais getDadosEspirituais() {
 		return dadosEspirituais;
 	}

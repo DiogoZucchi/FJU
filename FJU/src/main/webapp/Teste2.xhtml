@@ -17,9 +17,12 @@
 		
 	<script type="text/javascript">
 		$(document).ready(function(){
+			
 			$("#bt1").click(function(event){
-				$("#bt1").addClass("btn-primary");   
+				$("#bt1").addClass("btn-primary");
 				$("#bt2").removeClass("btn-primary");
+				
+				$("#bt1").addClass("font-template-esq");
 			});
 			$("#bt2").click(function(event){
 				$("#bt1").removeClass("btn-primary");   
@@ -36,7 +39,7 @@
 <h:body>
     
 <h:form>  
-    <p:growl id="messages"/>
+    <p:growl id="messages" />
     
  	<p:menubar style="background:#363636" styleClass="navbar navbar-fixed-top">
  	
@@ -49,13 +52,36 @@
         </f:facet>
     </p:menubar>
     
-    
-    <p:layout style="min-height:700px;" styleClass="col-md-4">
-	    <p:layoutUnit position="center"/>
+    <p:layout style="min-height:750px;margin-left:-15px;" styleClass="col-md-2">
+	    
+	    <p:layoutUnit position="center">
+	    	<div id="bt1">
+		    	<h:commandLink value="Cadastrar" action="Cadastro.xhtml" styleClass="btn btn-lg btn-block " style="margin-top:70px;border-radius:0px;"/>
+	    	</div>
+	    	<div id="bt2">
+		    	<h:commandLink value="Usuários" action="Teste2.xhtml" styleClass="btn btn-lg btn-block " style="margin-top:0px;border-radius:0px;"/>
+		    </div>
+		    
+		    
+		    <p:growl id="growl" life="2000" />
+ 
+		    <p:commandLink id="ajax" update="growl" action="Cadastro.xhtml">
+		        <h:outputText value="Ajax Submit" />
+		    </p:commandLink>
+		    
+	    </p:layoutUnit>
+	    
+	    
 	</p:layout>
 	
-	<p:layout style="min-height:700px;" styleClass="col-md-8">
-	    <p:layoutUnit position="center"/>
+	<p:layout style="min-height:750px;" styleClass="col-md-10">
+	    <p:layoutUnit position="center">
+	    	
+	    	<div style="margin-top:70px">
+				<ui:insert name="content"/>
+			</div>
+			
+	    </p:layoutUnit>
 	</p:layout>
 
 </h:form>

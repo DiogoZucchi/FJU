@@ -21,9 +21,9 @@ public class Cidade {
 	public int getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(int codigo) {
+	/*public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}
+	}*/
 	
 	@Column(name="nome")
 	public String getNome() {

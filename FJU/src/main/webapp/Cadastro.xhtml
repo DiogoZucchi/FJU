@@ -16,22 +16,67 @@
 <h:body>
 	
 	<h:form>
-		<p:messages id="messages"/>
-		<p:panelGrid columns="2">
+	
+		<ui:composition template="Teste2.xhtml">
+			<ui:define name="content">
 		
-			<h:outputLabel value="Nome"/>
-			<p:inputText id="nome" value="" label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório."/>
-			
-			<h:outputLabel value="Nascimento" />
-			<p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" showOn="button" />
-			
-			<h:outputLabel value="Sexo"/>
-			<h:selectOneRadio value="">
-				<f:selectItem itemValue="M" itemLabel="Masculino" />
-				<f:selectItem itemValue="F" itemLabel="Feminino"/>
-			</h:selectOneRadio>
+				<h1>Cadastro</h1>
 		
-		</p:panelGrid>
+				<p:panelGrid columns="2">
+				
+					<h:outputLabel value="Nome"/>
+					<p:inputText id="nome" value="#{pessoaMidiaMB.pessoaMidia.nome}" label="Nome"/>
+					
+					<h:outputLabel value="Nascimento" />
+					<p:calendar locale="pt" showButtonPanel="true" navigator="true" id="ptCal" showOn="button" />
+					
+					<h:outputLabel value="Sexo"/>
+					<h:selectOneRadio value="#{pessoaMidiaMB.pessoaMidia.sexo}">
+						<f:selectItem itemValue="M" itemLabel="Masculino"/>
+						<f:selectItem itemValue="F" itemLabel="Feminino"/>
+					</h:selectOneRadio>
+					
+					<h:outputLabel value="CEP"/>
+					<p:inputText label="cep"/>
+					
+					<h:outputLabel value="*Estado"/>
+                    <h:selectOneMenu value="#{pessoaMidiaMB.estadoSelecionado}" id="estado">
+                        <f:selectItems value="#{pessoaMidiaMB.estadoMap.entrySet()}" var="c"
+                                       itemLabel="#{c.value}"
+                                       itemValue="#{c.key}" />
+                    </h:selectOneMenu>
+					
+					<h:outputLabel value="Cidade"/>
+					<p:inputText label="cidade"/>
+					
+					<h:outputLabel value="Bloco"/>
+					<p:inputText label="bloco"/>
+					
+					<h:outputLabel value="Endereço"/>
+					<p:inputText label="endereco"/>
+					
+					<h:outputLabel value="N°"/>
+					<p:inputText label="numEd"/>
+					
+					<h:outputLabel value="Telefone"/>
+					<p:inputText label="telefone"/>
+					
+					<h:outputLabel value="Celular"/>
+					<p:inputText label="celular"/>
+					
+					<h:outputLabel value="E-mail"/>
+					<p:inputText label="email"/>
+					
+					<h:outputLabel value="Instagram"/>
+					<p:inputText label="instagram"/>
+					
+				</p:panelGrid>	
+					
+											
+
+			</ui:define>
+		</ui:composition>
+		
 	</h:form>
 	
 </h:body>

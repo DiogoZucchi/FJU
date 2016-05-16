@@ -27,12 +27,12 @@ public class BuscaLogradouro {
             CepWebService cepWebService = new CepWebService(cep);
                 
             if (cepWebService.getResultado()==1) {
-                System.out.println(cepWebService.getTipo_logradouro() + " " + cepWebService.getLogradouro());
-                System.out.println(cepWebService.getEstado());
-                System.out.println(cepWebService.getCidade());
-                System.out.println(cepWebService.getBairro());
-                System.out.println(cepWebService.getResultado());
-                System.out.println(cepWebService.getResultado_txt());
+                String endereco = cepWebService.getTipo_logradouro() + " " + cepWebService.getLogradouro();
+                String siglaEstado = cepWebService.getEstado();
+                String nomeCidade = cepWebService.getCidade();
+                String nomeBairro = cepWebService.getBairro();
+                int resultado = cepWebService.getResultado();
+                
             }
             else {
                 System.out.println("Servidor não está respondendo.");

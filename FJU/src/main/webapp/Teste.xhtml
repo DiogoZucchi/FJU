@@ -4,29 +4,80 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:opt="http://primefaces.prime.com.tr/optimus"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all"/>
-	<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"	media="all" />
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+	
+    <style type="text/css">
+       .ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd{
+            border: none;
+       }
+    </style>
+		
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$("#bt1").click(function(event){
+				$("#bt1").addClass("btn-primary");
+				$("#bt2").removeClass("btn-primary");
+				
+				$("#bt1").addClass("font-template-esq");
+			});
+			$("#bt2").click(function(event){
+				$("#bt1").removeClass("btn-primary");   
+				$("#bt2").addClass("btn-primary");
+			});
+		});
+		
+	</script>
+	
 </h:head>
-<body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">FJU</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
 
-</body>
+
+<h:body>
+    
+<h:form id="formWest">  
+    <p:growl id="messages" />
+    
+ 	<p:menubar style="background:#363636" styleClass="navbar navbar-fixed-top">
+ 	
+        <p:menuitem value="FJU" style="font-size: 25px;"/>
+ 
+        <f:facet name="options">
+            <p:menuButton value="Diogo Zucchi" style="margin-right:10px; margin-top:10px;">
+		        <p:menuitem value="Sair" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+		    </p:menuButton>
+        </f:facet>
+    </p:menubar>
+    
+    <p:layout style="min-height:750px;margin-left:-15px;" styleClass="col-md-2">
+	    <p:layoutUnit position="center">
+	    	
+	    	<div id="bt1">
+		    	<h:commandLink value="Cadastrar" action="Cadastro.xhtml" styleClass="btn btn-lg btn-block " style="margin-top:70px;border-radius:0px;">
+		    	
+		    	</h:commandLink>
+	    	</div>
+	    	<div id="bt2">
+		    	<h:commandLink value="Usuários" action="Main.xhtml" styleClass="btn btn-lg btn-block " style="margin-top:0px;border-radius:0px;">
+		    	</h:commandLink>
+		    </div>
+		    
+	    </p:layoutUnit>
+	</p:layout>
+
+	<p:layout style="min-height:750px;" styleClass="col-md-10">
+	    <p:layoutUnit position="center">
+	    	
+	    	<p:panel id="conteudo" style="margin-top:70px">
+				<ui:insert name="content"/>
+			</p:panel>
+			
+	    </p:layoutUnit>
+	</p:layout>
+
+</h:form>
+</h:body>
 </html>

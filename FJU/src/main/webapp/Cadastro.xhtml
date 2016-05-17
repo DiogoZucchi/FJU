@@ -17,10 +17,12 @@
 	
 	<h:form>
 	
-		<ui:composition template="Teste2.xhtml">
+		<ui:composition template="Teste.xhtml">
 			<ui:define name="content">
 		
 				<h1>Cadastro</h1>
+		
+				<p:separator/>
 		
 				<p:panelGrid columns="2">
 				
@@ -37,23 +39,28 @@
 					</h:selectOneRadio>
 					
 					<h:outputLabel value="CEP"/>
-					<p:inputText label="cep"/>
+					<p:inputText id="cep" value="#{pessoaMidiaMB.cep}">
+						<p:ajax event="blur" update="cidade endereco bairro estado" listener="#{pessoaMidiaMB.buscaLogradouro()}"/>
+					</p:inputText>
 					
 					<h:outputLabel value="*Estado"/>
-                    <h:selectOneMenu value="#{pessoaMidiaMB.estadoSelecionado}" id="estado">
+                    <h:selectOneMenu id="estado" value="#{pessoaMidiaMB.estadoSelecionado}">
                         <f:selectItems value="#{pessoaMidiaMB.estadoMap.entrySet()}" var="c"
                                        itemLabel="#{c.value}"
                                        itemValue="#{c.key}" />
                     </h:selectOneMenu>
 					
 					<h:outputLabel value="Cidade"/>
-					<p:inputText label="cidade"/>
+					<p:inputText id="cidade" value="#{pessoaMidiaMB.cidade.nome}"/>
 					
 					<h:outputLabel value="Bloco"/>
 					<p:inputText label="bloco"/>
 					
+					<h:outputLabel value="Bairro"/>
+					<p:inputText id="bairro" value="#{pessoaMidiaMB.pessoaMidia.bairro}"/>
+					
 					<h:outputLabel value="Endereço"/>
-					<p:inputText label="endereco"/>
+					<p:inputText id="endereco" value="#{pessoaMidiaMB.pessoaMidia.endereco}"/>
 					
 					<h:outputLabel value="N°"/>
 					<p:inputText label="numEd"/>

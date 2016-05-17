@@ -9,6 +9,7 @@ import dao.PessoaMidiaDao;
 import model.Cidade;
 import model.Estado;
 import model.PessoaMidia;
+import teste.CepWebService;
 
 @ManagedBean(name="pessoaMidiaMB")
 public class PessoaMidiaMB {
@@ -18,11 +19,10 @@ public class PessoaMidiaMB {
 	private String cep;
 	private String estadoSelecionado;
 	private String sexoSelecionado;
-	private Estado estado;
-	private Cidade cidade;
+	private Cidade cidade = new Cidade();
 	public Map<String, String> estadoMap;
 	
-	/*public void BuscaLogradouro() {
+	public void buscaLogradouro() {
         try {
             CepWebService cepWebService = new CepWebService(this.cep);
                 
@@ -31,18 +31,15 @@ public class PessoaMidiaMB {
                 String siglaEstado = cepWebService.getEstado();
                 String nomeCidade = cepWebService.getCidade();
                 String nomeBairro = cepWebService.getBairro();
-                int resultado = cepWebService.getResultado();
+                //int resultado = cepWebService.getResultado();
                 
                 //ESTADO.
-                estado = new Estado();
-                estado.setUf(siglaEstado);
+                setEstadoSelecionado(siglaEstado);
                 
                 //CIDADE.
-                cidade = new Cidade();
                 cidade.setNome(nomeCidade);
                 
                 //ENDEREÇO.
-                pessoaMidia = new PessoaMidia();
                 pessoaMidia.setEndereco(endereco);
                 
                 //BAIRRO.
@@ -55,7 +52,7 @@ public class PessoaMidiaMB {
         catch (Exception ex) {
             ex.printStackTrace();
         }  
-    }*/    	
+    }    	
 	
 	public PessoaMidiaMB() {
 		popularEstadoMap();
@@ -97,12 +94,6 @@ public class PessoaMidiaMB {
 	}
 	public void setCep(String cep) {
 		this.cep = cep;
-	}
-	public Estado getEstado() {
-		return estado;
-	}
-	public void setEstado(Estado estado) {
-		this.estado = estado;
 	}
 	public Cidade getCidade() {
 		return cidade;

@@ -32,9 +32,9 @@ public class UsuarioMB {
          }
 	 }
 	 
-	 public String enviar2() {
+	 public void enviar2() {
          System.out.println("awd");
-         return "main";
+         //return "main";
 	 }
 
 	public Usuario getUsuario() {

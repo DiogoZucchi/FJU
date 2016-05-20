@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:opt="http://primefaces.org/ui" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+</h:head>
+
+
+<h:body>
+
+	<h:form>
+
+
+			<h:outputText value="Blur: " />
+			
+			<p:inputText id="surname" value="#{usuarioMB.usuario.login}">
+				<p:ajax event="blur" update="out2" />
+			</p:inputText>
+			
+			<p:commandButton value="OK" action="#"/>
+			<button onclick=""></button>
+			
+	</h:form>
+
+			<h:outputText id="out2" value="#{usuarioMB.usuario.login}" />
+</h:body>
+
+
+</html>

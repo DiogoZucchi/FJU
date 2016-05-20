@@ -18,7 +18,9 @@
 
 				
 			<h1>Header Padrão</h1>
-			<h:commandLink class="btn btn-lg btn-primary btn-block" value="Logar" title="Clique aqui para Cadastrar." action="#{usuarioMB.enviar2}"/>
+			<h:commandLink class="btn btn-lg btn-primary btn-block" value="Logar" title="Clique aqui para Cadastrar.">
+				<f:ajax listener="#{usuarioMB.enviar2}" execute="@all" render="@all" event="click"/>
+			</h:commandLink>
 
 		</ui:define>
 	</ui:composition>

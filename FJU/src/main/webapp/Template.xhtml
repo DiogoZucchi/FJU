@@ -1,33 +1,90 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-	
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:opt="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
 	
-	<h:head>
-		<link rel="stylesheet" href="css/bootstrap.css" type="text/css" media="all"/>
-		<link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css" media="all"/>
-		<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
-	</h:head>
+    <style type="text/css">
+       .ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd{
+            border: none;
+       }
+       html, body {
+       		margin: 0;
+       		height: 100%;
+       }
+        
+    </style>
 		
-	<h:body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			
+			$("#bt1").click(function(event){
+				$("#bt1").addClass("btn-primary");
+				$("#bt2").removeClass("btn-primary");
+				
+				$("#bt1").addClass("font-template-esq");
+			});
+			$("#bt2").click(function(event){
+				$("#bt1").removeClass("btn-primary");   
+				$("#bt2").addClass("btn-primary");
+			});
+		});
+		
+	</script>
+	
+</h:head>
 
-	<fieldset>
-		
-		<div class="formulario-corpo">
-			<div class="form-group">
-				<div id="page-vrapper">
-					<ui:insert name="corpo"></ui:insert>
-				</div>
-			</div>
-		</div>
-						
-	</fieldset>
-	
-	</h:body>
-	
+
+
+<h:body>
+    
+	<p:growl id="messages" />
+	<h:form>    
+	 	<p:menubar style="background:#363636" styleClass="navbar navbar-fixed-top">
+	        <p:menuitem value="FJU" style="font-size: 25px;"/>
+	        <f:facet name="options">
+	            <p:menuButton value="Diogo Zucchi" style="margin-right:10px; margin-top:10px;">
+			        <p:menuitem value="Sair" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+			    </p:menuButton>
+	        </f:facet>
+	    </p:menubar>
+    </h:form>
+    
+	<div class="container-fluid" style="height: 100%">
+  		<div class="row-fluid" style="height: 100%">
+    		
+    		<div id="template-esquerdo" class="span2" style="background-color:#eee;height: 100%;margin-left: -12px;position: fixed;">
+      			<h:form>
+      				
+      				<div id="template-left" style="margin-top: 100px">
+	    				<div id="bt1">
+					    	<h:commandLink value="Cadastrar" action="Cadastro.xhtml" styleClass="btn btn-lg btn-block " style="border-radius:0px;"/>
+	    				</div>
+				    	<div id="bt2">
+					    	<h:commandLink value="Usuários" action="Main.xhtml" styleClass="btn btn-lg btn-block " style="border-radius:0px;"/>
+					    </div>
+					    <div id="bt3">
+					    	<h:commandLink value="Usuários" action="Bloco.xhtml" styleClass="btn btn-lg btn-block " style="border-radius:0px;"/>
+					    </div>
+				    </div>
+				    
+   				</h:form>
+    		</div>
+    		
+    		<div id="template-center" class="span10" style="margin-top: 80px;margin-left: 230px">
+				<h:form>  
+					<ui:insert name="content"/>
+				</h:form>
+    		</div>
+    		
+  		</div>
+	</div>
+
+</h:body>
 </html>

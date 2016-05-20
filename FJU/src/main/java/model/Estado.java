@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,8 +10,6 @@ import javax.persistence.Table;
 public class Estado {
 	private String uf;
 	private String nome;
-	private ArrayList<Bloco> listaBloco = new ArrayList<Bloco>();
-	
 	
 	@Id
 	@Column(name="uf")
@@ -30,11 +26,8 @@ public class Estado {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public ArrayList<Bloco> getListaBloco() {
-		return listaBloco;
+	@Override
+	public String toString() {
+		return "Estado [uf=" + uf + ", nome=" + nome + "]";
 	}
-	public void setListaBloco(ArrayList<Bloco> listaBloco) {
-		this.listaBloco = listaBloco;
-	}
-	
 }

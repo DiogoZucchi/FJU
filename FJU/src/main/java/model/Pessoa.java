@@ -24,8 +24,6 @@ public class Pessoa {
 	private String idiomas;
 	private Date dataDoCadastro;
 
-
-	
 	public int getCep() {
 		return cep;
 	}

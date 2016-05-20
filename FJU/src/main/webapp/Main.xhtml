@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
-<title>Insert title here</title>
-</head>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:opt="http://primefaces.prime.com.tr/optimus"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+</h:head>
 <body>
-	<ui:composition template="Teste.xhtml">
+	<ui:composition template="Template.xhtml">
 		<ui:define name="content">
 
+				
 			<h1>Header Padrão</h1>
+			<h:commandLink class="btn btn-lg btn-primary btn-block" value="Logar" title="Clique aqui para Cadastrar." action="#{usuarioMB.enviar2}"/>
 
 		</ui:define>
 	</ui:composition>

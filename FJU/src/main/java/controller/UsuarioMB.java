@@ -16,6 +16,7 @@ public class UsuarioMB {
 	private Usuario usuario = new Usuario();
 	
 	 public String enviar() {
+		  System.out.println("awd");
          usuario = usuarioDao.listarUm(usuario);
          if (usuario == null) {
                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!",
@@ -29,6 +30,11 @@ public class UsuarioMB {
 			}
                return "main";
          }
+	 }
+	 
+	 public String enviar2() {
+         System.out.println("awd");
+         return "main";
 	 }
 
 	public Usuario getUsuario() {

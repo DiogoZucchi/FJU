@@ -5,7 +5,11 @@ import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 
+import dao.BlocoDao;
+import dao.CidadeDao;
+import dao.EstadoDao;
 import dao.PessoaMidiaDao;
+import model.Bloco;
 import model.Cidade;
 import model.Estado;
 import model.PessoaMidia;
@@ -20,7 +24,8 @@ public class PessoaMidiaMB {
 	private String estadoSelecionado;
 	private String sexoSelecionado;
 	private Cidade cidade = new Cidade();
-	public Map<String, String> estadoMap;
+	private Bloco bloco = new Bloco();
+	
 	
 	public void buscaLogradouro() {
         try {
@@ -44,6 +49,7 @@ public class PessoaMidiaMB {
                 
                 //BAIRRO.
                 pessoaMidia.setBairro(nomeBairro);
+                
             }
             else {
                 System.out.println("Servidor nÃ£o estÃ¡ respondendo.");
@@ -54,41 +60,40 @@ public class PessoaMidiaMB {
         }  
     }    	
 	
-	public PessoaMidiaMB() {
-		popularEstadoMap();
+	//CADASTRAR.
+	public String cadastrarPessoa() {
+		
+		//INSERT BLOCO.
+		EstadoDao estadoDao = new EstadoDao();
+		BlocoDao blocoDao = new BlocoDao();
+		Estado estado = new Estado();
+		estado = estadoDao.listarUm(estadoSelecionado);
+		bloco.setEstado(estado);
+		blocoDao.inserir(bloco);
+		pessoaMidia.setBloco(bloco);
+		//*************
+		
+		//INSERT ESTADO.
+		pessoaMidia.setEstado(estado);
+		//**************
+		
+		//INSERT CIDADE.
+		CidadeDao cidadeDao = new CidadeDao();
+		setCidade(cidadeDao.listarUm(getCidade().getNome(), estadoSelecionado));
+		getCidade().setBloco(bloco);
+		cidadeDao.inserir(getCidade());
+		pessoaMidia.setCidade(getCidade());
+		//**************
+		
+		//INSERT PESSOA MIDIA.
+		pessoaMidiaDao = new PessoaMidiaDao();
+		pessoaMidiaDao.inserir(this.pessoaMidia);
+		//********************
+		  
+		return "main";
 	}
 	
-	public void popularEstadoMap() {
-		estadoMap = new LinkedHashMap<String, String>();
-		estadoMap.put("AC", "Acre");
-		estadoMap.put("AL", "Alagoas");
-		estadoMap.put("AP", "Amapá");
-		estadoMap.put("AM", "Amazonas");
-		estadoMap.put("BA", "Bahia");
-		estadoMap.put("CE", "Ceará");
-		estadoMap.put("DF", "Distrito Federal");
-		estadoMap.put("ES", "Espirito Santo");
-		estadoMap.put("GO", "Goiás");
-		estadoMap.put("MA", "Maranhão");
-		estadoMap.put("MT", "Mato Grosso");
-		estadoMap.put("MS", "Mato Grosso do Sul");
-		estadoMap.put("MG", "Minas Gerais");
-		estadoMap.put("PA", "Pará");
-		estadoMap.put("PB", "Paraiba");
-		estadoMap.put("PR", "Paraná");
-		estadoMap.put("PE", "Pernambuco");
-		estadoMap.put("PI", "Piauí");
-		estadoMap.put("RJ", "Rio de Janeiro");
-		estadoMap.put("RN", "Rio Grande do Norte");
-		estadoMap.put("RS", "Rio Grande do Sul");
-		estadoMap.put("RO", "Rondônia");
-		estadoMap.put("RR", "Roraima");
-		estadoMap.put("SC", "Santa Catarina");
-		estadoMap.put("SP", "São Paulo");
-		estadoMap.put("SE", "Sergipe");
-		estadoMap.put("TO", "Tocantis");
-	}
-	
+
 	public String getCep() {
 		return cep;
 	}
@@ -107,12 +112,6 @@ public class PessoaMidiaMB {
 	public void setEstadoSelecionado(String estadoSelecionado) {
 		this.estadoSelecionado = estadoSelecionado;
 	}
-	public Map<String, String> getEstadoMap() {
-		return estadoMap;
-	}
-	public void setEstadoMap(Map<String, String> estadoMap) {
-		this.estadoMap = estadoMap;
-	}
 	public String getSexoSelecionado() {
 		return sexoSelecionado;
 	}
@@ -124,5 +123,11 @@ public class PessoaMidiaMB {
 	}
 	public void setPessoaMidia(PessoaMidia pessoaMidia) {
 		this.pessoaMidia = pessoaMidia;
+	}
+	public Bloco getBloco() {
+		return bloco;
+	}
+	public void setBloco(Bloco bloco) {
+		this.bloco = bloco;
 	}
 }

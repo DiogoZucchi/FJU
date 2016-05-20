@@ -5,8 +5,6 @@ public class PessoaMidia extends Pessoa{
 	private String equipamentos;
 	private int departamento;
 
-	
-	
 	public String getCursos() {
 		return cursos;
 	}

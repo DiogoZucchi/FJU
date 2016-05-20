@@ -11,7 +11,7 @@ import model.PessoaMidia;
 public class PessoaMidiaDao {
 	private EntityManager manager;
 	
-	public void inserir(PessoaMidiaDao pessoa) {
+	public void inserir(PessoaMidia pessoa) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 	
 		try {
@@ -23,7 +23,7 @@ public class PessoaMidiaDao {
 		}
 	}
 	
-	public void remover(PessoaMidiaDao pessoa){
+	public void remover(PessoaMidia pessoa){
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
@@ -35,7 +35,7 @@ public class PessoaMidiaDao {
 		}	
 	}
 	
-	public void alterar(PessoaMidiaDao pessoa) {
+	public void alterar(PessoaMidia pessoa) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
@@ -58,12 +58,12 @@ public class PessoaMidiaDao {
 		}
 	}
 	
-	public ArrayList<PessoaMidiaDao> listarTodos() {
+	public ArrayList<PessoaMidia> listarTodos() {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
-			TypedQuery<PessoaMidiaDao> consulta = manager.createQuery("SELECT id,login,password FROM PessoaMidiaDao", PessoaMidiaDao.class);
-			return (ArrayList<PessoaMidiaDao>) consulta.getResultList();
+			TypedQuery<PessoaMidia> consulta = manager.createQuery("SELECT id,login,password FROM PessoaMidia", PessoaMidia.class);
+			return (ArrayList<PessoaMidia>) consulta.getResultList();
 		} finally {
 			manager.close();
 		}

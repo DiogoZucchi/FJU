@@ -14,6 +14,7 @@ public class Cidade {
 	private int codigo;
 	private String nome;
 	private Bloco bloco;
+	private Estado estado;
 
 	@Id
 	@Column(name="codigo")
@@ -21,9 +22,9 @@ public class Cidade {
 	public int getCodigo() {
 		return codigo;
 	}
-	/*public void setCodigo(int codigo) {
+	public void setCodigo(int codigo) {
 		this.codigo = codigo;
-	}*/
+	}
 	
 	@Column(name="nome")
 	public String getNome() {
@@ -39,5 +40,12 @@ public class Cidade {
 	}
 	public void setBloco(Bloco bloco) {
 		this.bloco = bloco;
+	}
+	@ManyToOne
+	public Estado getEstado() {
+		return estado;
+	}
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 }

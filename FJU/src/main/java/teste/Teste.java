@@ -12,7 +12,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import dao.EstadoDao;
 import model.Aluno;
+import model.Bloco;
+import model.Cidade;
+import model.Estado;
 import model.Sala;
 
 public class Teste {
@@ -24,7 +28,6 @@ public class Teste {
 //		trx.begin();
 		
 		manager.getTransaction().begin();
-		System.out.println("wawdaadad");
 		
 		/*SessionFactory fabrica = new Configuration().configure().buildSessionFactory();
 		Session sessao = fabrica.openSession();
@@ -35,12 +38,30 @@ public class Teste {
 		System.out.println(aluno.getDescricao());
 		manager.remove(aluno);*/
 		
-		/*		
+				
 		Estado estado = new Estado();
 		Bloco bloco = new Bloco();
-		Cidade cidade = new Cidade();*/
+		Cidade cidade = new Cidade();
+		estado.setNome("Santa Catarina");
+		estado.setUf("SC");
+		bloco.setEstado(estado);
+		bloco.setNome("Bloco Blumenau");
+		cidade.setBloco(bloco);
+		cidade.setEstado(estado);
+		cidade.setNome("Blumenau");
 		
-		Sala sala = new Sala();
+		//INSERIR ESTADO/CIDADE/BLOCO.
+		/*manager.persist(estado);
+		manager.persist(bloco);
+		manager.persist(cidade);*/
+		
+		//LISTAR UM.
+		EstadoDao estadoDao = new EstadoDao();
+		Estado estado2 = new Estado(); 
+		estado2 = estadoDao.listarUm("SC");
+		System.out.println(estado2.toString());
+		
+		/*Sala sala = new Sala();
 		sala.setDescricao("Sala");
 		
 		Aluno aluno = new Aluno();
@@ -52,7 +73,7 @@ public class Teste {
 
 		sala.setAlunos(alunos);
 
-		manager.persist(sala);
+		manager.persist(sala);*/
 		
 		manager.getTransaction().commit();
 		manager.close();

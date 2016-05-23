@@ -25,14 +25,19 @@
 		$(document).ready(function(){
 			
 			$("#bt1").click(function(event){
-				$("#bt1").addClass("btn-primary");
-				$("#bt2").removeClass("btn-primary");
-				
-				$("#bt1").addClass("font-template-esq");
+				$("#bt2").removeClass("btn-primary botao-selecionado");
+				$("#bt3").removeClass("btn-primary botao-selecionado");
+				$("#bt1").addClass("btn-primary botao-selecionado");
 			});
 			$("#bt2").click(function(event){
-				$("#bt1").removeClass("btn-primary");   
-				$("#bt2").addClass("btn-primary");
+				$("#bt1").removeClass("btn-primary botao-selecionado");
+				$("#bt3").removeClass("btn-primary botao-selecionado");
+				$("#bt2").addClass("btn-primary botao-selecionado");
+			});
+			$("#bt3").click(function(event){
+				$("#bt1").removeClass("btn-primary botao-selecionado");
+				$("#bt2").removeClass("btn-primary botao-selecionado");
+				$("#bt3").addClass("btn-primary botao-selecionado");
 			});
 		});
 		
@@ -64,23 +69,30 @@
       				
       				<div id="template-left" style="margin-top: 100px">
 	    				<div id="bt1">
-					    	<h:commandLink value="Cadastrar" action="Cadastro.xhtml" styleClass="btn btn-lg btn-block " style="border-radius:0px;"/>
+					    	<h:commandLink value="Cadastrar" actionListener="#{templateMB.opCadastro}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+					    		<p:ajax update="content"/> 
+					    	</h:commandLink>
 	    				</div>
 				    	<div id="bt2">
-					    	<h:commandLink value="Usuários" action="Main.xhtml" styleClass="btn btn-lg btn-block " style="border-radius:0px;"/>
+					    	<h:commandLink value="Usuários" actionListener="#{templateMB.opListar}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+					    		<p:ajax update="content"/> 
+					    	</h:commandLink>
 					    </div>
 					    <div id="bt3">
-					    	<h:commandLink value="Usuários" action="Bloco.xhtml" styleClass="btn btn-lg btn-block " style="border-radius:0px;"/>
+					    	<h:commandLink value="Bloco" actionListener="#{templateMB.opBloco}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+					    		<p:ajax update="content"/> 
+					    	</h:commandLink>
 					    </div>
 				    </div>
 				    
    				</h:form>
     		</div>
     		
-    		<div id="template-center" class="span10" style="margin-top: 80px;margin-left: 230px">
-				<h:form>  
+    		<div class="span10" style="margin-top: 80px;margin-left: 230px">
+    			<h:form id="content">
 					<ui:insert name="content">
-					 </ui:insert>
+						<ui:include src="#{templateMB.opcaoTemplate}"/>
+					</ui:insert>
 				</h:form>
     		</div>
     		

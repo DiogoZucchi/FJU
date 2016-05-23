@@ -22,12 +22,12 @@ public class PessoaMidiaMB {
 	
 	private String cep;
 	private String estadoSelecionado;
+	private String blocoSelecionado;
+	private String cidadeSelecionada;
 	private String sexoSelecionado;
-	private Cidade cidade = new Cidade();
-	private Bloco bloco = new Bloco();
-	
 	
 	public void buscaLogradouro() {
+		
         try {
             CepWebService cepWebService = new CepWebService(this.cep);
                 
@@ -42,7 +42,7 @@ public class PessoaMidiaMB {
                 setEstadoSelecionado(siglaEstado);
                 
                 //CIDADE.
-                cidade.setNome(nomeCidade);
+                setCidadeSelecionada(nomeCidade);
                 
                 //ENDEREÇO.
                 pessoaMidia.setEndereco(endereco);
@@ -63,26 +63,28 @@ public class PessoaMidiaMB {
 	//CADASTRAR.
 	public String cadastrarPessoa() {
 		
-		//INSERT BLOCO.
-		EstadoDao estadoDao = new EstadoDao();
-		BlocoDao blocoDao = new BlocoDao();
-		Estado estado = new Estado();
-		estado = estadoDao.listarUm(estadoSelecionado);
-		bloco.setEstado(estado);
-		blocoDao.inserir(bloco);
-		pessoaMidia.setBloco(bloco);
-		//*************
 		
+		//****************
+		//*** ENDEREÇO ***
+		//****************
+		//CEP
+		pessoaMidia.setCep(cep);
 		//INSERT ESTADO.
+		EstadoDao estadoDao = new EstadoDao();
+		Estado estado = estadoDao.listarUm(estadoSelecionado);
 		pessoaMidia.setEstado(estado);
+		//*************
+		//INSERT BLOCO.
+		BlocoDao blocoDao = new BlocoDao();
+		Bloco bloco = blocoDao.listarUm(Integer.parseInt(blocoSelecionado));
+		pessoaMidia.setBloco(bloco);
 		//**************
-		
 		//INSERT CIDADE.
-		CidadeDao cidadeDao = new CidadeDao();
+		/*CidadeDao cidadeDao = new CidadeDao();
 		setCidade(cidadeDao.listarUm(getCidade().getNome(), estadoSelecionado));
 		getCidade().setBloco(bloco);
 		cidadeDao.inserir(getCidade());
-		pessoaMidia.setCidade(getCidade());
+		pessoaMidia.setCidade(getCidade());*/
 		//**************
 		
 		//INSERT PESSOA MIDIA.
@@ -92,7 +94,6 @@ public class PessoaMidiaMB {
 		  
 		return "main";
 	}
-	
 
 	public String getCep() {
 		return cep;
@@ -100,17 +101,15 @@ public class PessoaMidiaMB {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public Cidade getCidade() {
-		return cidade;
-	}
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
 	public String getEstadoSelecionado() {
+		BlocoMB.estadoSelected = estadoSelecionado;
+		CidadeMB.estadoSelected = estadoSelecionado;
 		return estadoSelecionado;
 	}
 	public void setEstadoSelecionado(String estadoSelecionado) {
 		this.estadoSelecionado = estadoSelecionado;
+		BlocoMB.estadoSelected = this.estadoSelecionado;
+		CidadeMB.estadoSelected = this.estadoSelecionado;
 	}
 	public String getSexoSelecionado() {
 		return sexoSelecionado;
@@ -124,10 +123,16 @@ public class PessoaMidiaMB {
 	public void setPessoaMidia(PessoaMidia pessoaMidia) {
 		this.pessoaMidia = pessoaMidia;
 	}
-	public Bloco getBloco() {
-		return bloco;
+	public String getBlocoSelecionado() {
+		return blocoSelecionado;
 	}
-	public void setBloco(Bloco bloco) {
-		this.bloco = bloco;
+	public void setBlocoSelecionado(String blocoSelecionado) {
+		this.blocoSelecionado = blocoSelecionado;
+	}
+	public String getCidadeSelecionada() {
+		return cidadeSelecionada;
+	}
+	public void setCidadeSelecionada(String cidadeSelecionada) {
+		this.cidadeSelecionada = cidadeSelecionada;
 	}
 }

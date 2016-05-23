@@ -11,26 +11,26 @@
 
 
 </h:head>
-
-
 <h:body>
-
-	<h:form>
-
-
-			<h:outputText value="Blur: " />
-			
-			<p:inputText id="surname" value="#{usuarioMB.usuario.login}">
-				<p:ajax event="blur" update="out2" />
-			</p:inputText>
-			
-			<p:commandButton value="OK" action="#"/>
-			<button onclick=""></button>
-			
+		
+	<h:form id="eu">	
+		<div id="content" class="span10" style="margin-top: 80px; margin-left: 230px">
+			<ui:insert name="content">
+				<ui:include src="#{templateMB.opcaoTemplate}" />
+			</ui:insert>
+		</div>
 	</h:form>
 
-			<h:outputText id="out2" value="#{usuarioMB.usuario.login}" />
+	<h:form>
+		<div id="bt">
+			<h1>OLÀÀÀ</h1>
+			<h:commandLink value="Cadastrar" actionListener="#{templateMB.opCadastro}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+				<p:ajax update="eu"/>
+			</h:commandLink>
+	    	<h:commandLink value="Usuários" actionListener="#{templateMB.opListar}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+	    	</h:commandLink>
+		</div>
+	</h:form>
+	
 </h:body>
-
-
 </html>

@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import dao.CidadeDao;
 import dao.EstadoDao;
 import model.Aluno;
 import model.Bloco;
@@ -22,12 +23,12 @@ import model.Sala;
 public class Teste {
 	public static void main(String[] args) {
 		//ESCOPOS DO MANAGEDBEAN
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("teste");
-		EntityManager manager = factory.createEntityManager();
+		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("teste");
+		//EntityManager manager = factory.createEntityManager();
 //		EntityTransaction trx = manager.getTransaction();
 //		trx.begin();
 		
-		manager.getTransaction().begin();
+		//manager.getTransaction().begin();
 		
 		/*SessionFactory fabrica = new Configuration().configure().buildSessionFactory();
 		Session sessao = fabrica.openSession();
@@ -38,28 +39,37 @@ public class Teste {
 		System.out.println(aluno.getDescricao());
 		manager.remove(aluno);*/
 		
-				
+		/*		
+		//INSERIR ESTADO.
 		Estado estado = new Estado();
-		Bloco bloco = new Bloco();
-		Cidade cidade = new Cidade();
 		estado.setNome("Santa Catarina");
 		estado.setUf("SC");
+		manager.persist(estado);
+		//INSERIR BLOCO.
+		Bloco bloco = new Bloco();
 		bloco.setEstado(estado);
 		bloco.setNome("Bloco Blumenau");
+		manager.persist(bloco);
+		//INSERIR CIDADE.
+		Cidade cidade = new Cidade();
 		cidade.setBloco(bloco);
 		cidade.setEstado(estado);
 		cidade.setNome("Blumenau");
+		manager.persist(cidade);
+		//UPDATE - BLOCO
+		bloco.getCidades().add(cidade);
+		manager.merge(bloco);
+		*/
 		
-		//INSERIR ESTADO/CIDADE/BLOCO.
-		/*manager.persist(estado);
-		manager.persist(bloco);
-		manager.persist(cidade);*/
-		
-		//LISTAR UM.
+		//LISTAR UM ESTADO.
 		EstadoDao estadoDao = new EstadoDao();
-		Estado estado2 = new Estado(); 
-		estado2 = estadoDao.listarUm("SC");
-		System.out.println(estado2.toString());
+		Estado estado = estadoDao.listarUm("SC"); 
+		//System.out.println(estado.toString());
+		
+		//LISTAR UMA CIDADE.
+		CidadeDao cidadeDao = new CidadeDao();
+		Cidade cidade = cidadeDao.listarUm("Blumenau", estado);
+		System.out.println(cidade.toString());
 		
 		/*Sala sala = new Sala();
 		sala.setDescricao("Sala");
@@ -75,7 +85,7 @@ public class Teste {
 
 		manager.persist(sala);*/
 		
-		manager.getTransaction().commit();
-		manager.close();
+		//manager.getTransaction().commit();
+		//manager.close();
 	}
 }

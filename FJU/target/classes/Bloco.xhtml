@@ -16,31 +16,29 @@
 <h:body>
 	
 	
-		<ui:composition template="Template.xhtml">
-			<ui:define name="content">
+		<ui:composition>
 				<h1>Bloco</h1>
 
-				 	<div id="form-bloco" class="col-md-12">
-						<h3><b>Dados Pessoais</b></h3>
-						<p:separator/>
+			 	<div id="form-bloco" class="col-md-12">
+					<h3><b>Dados Pessoais</b></h3>
+					<p:separator/>
+					
+					<p:panelGrid columns="2">
+						<h:outputLabel value="Nome"/>
+						<p:inputText value="#{blocoMB.bloco.nome}"/>
 						
-						<p:panelGrid columns="2">
-							<h:outputLabel value="Nome"/>
-							<p:inputText value="#{blocoMB.bloco.nome}"/>
-							
-							<h:outputLabel value="*Estado"/>
-		                    <h:selectOneMenu id="estado" value="#{blocoMB.estado.uf}">
-		                        <f:selectItems value="#{estadoMB.estadoMap.entrySet()}" var="est"
-		                                       itemLabel="#{est.value}"
-		                                       itemValue="#{est.key}"/>
-		                    </h:selectOneMenu>
-		                    
-		                    
-							
-						</p:panelGrid>
-					</div>
+						<h:outputLabel value="*Estado"/>
+	                    <h:selectOneMenu id="estado" value="#{blocoMB.estado.uf}">
+	                        <f:selectItems value="#{estadoMB.estadoMap.entrySet()}" var="est"
+	                                       itemLabel="#{est.value}"
+	                                       itemValue="#{est.key}"/>
+	                    </h:selectOneMenu>
+	                    
+	                    
+						
+					</p:panelGrid>
+				</div>
 	
-			</ui:define>
 		</ui:composition>		
 </h:body>
 </html>

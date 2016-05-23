@@ -14,122 +14,149 @@
 </h:head>
 	
 <h:body>
-	
-	
-		<ui:composition template="Template.xhtml">
-			<ui:define name="content">
-		
-				<h1>Cadastro</h1>
-				
 
-				 	<div id="form-pessoais" class="col-md-12">
-						<h3><b>Dados Pessoais</b></h3>
-						<p:separator/>
+
+	<ui:composition>
 	
-						<p:panelGrid columns="2">
-						
-							<h:outputLabel value="Nome"/>
-							<p:inputText id="nome" value="#{pessoaMidiaMB.pessoaMidia.nome}" label="Nome"/>
-							
-							<h:outputLabel value="Nascimento" />
-							<p:calendar locale="pt" value="#{pessoaMidiaMB.pessoaMidia.dtNasc}" showButtonPanel="true" navigator="true" id="ptCal" showOn="button" />
-							
-							<h:outputLabel value="Sexo"/>
-							<h:selectOneRadio value="#{pessoaMidiaMB.pessoaMidia.sexo}">
-								<f:selectItem itemValue="M" itemLabel="Masculino"/>
-								<f:selectItem itemValue="F" itemLabel="Feminino"/>
-							</h:selectOneRadio>
-							
-							<h:outputLabel value="Telefone"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.telefone}"/>
-							
-							<h:outputLabel value="Celular"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.celular}"/>
-							
-							<h:outputLabel value="E-mail"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.email}"/>
-							
-							<h:outputLabel value="Instagram"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.instagram}"/>
-							
-						</p:panelGrid>
-					</div>	
-				
-					<div id="form-endereco" class="col-md-12">
-						<h3><b>Endereço</b></h3>
-						<p:separator/>
-						<p:panelGrid columns="2">
-							<h:outputLabel value="CEP"/>
-							<p:inputText id="cep" value="#{pessoaMidiaMB.cep}">
-								<p:ajax event="blur" update="cidade endereco bairro estado" listener="#{pessoaMidiaMB.buscaLogradouro()}"/>
-							</p:inputText>
-							
-							<h:outputLabel value="*Estado"/>
-		                    <h:selectOneMenu id="estado" value="#{pessoaMidiaMB.estadoSelecionado}">
-		                        <f:selectItems value="#{estadoMB.estadoMap.entrySet()}" var="est"
-		                                       itemLabel="#{est.value}"
-		                                       itemValue="#{est.key}" />
-		                    </h:selectOneMenu>
-							
-							<h:outputLabel value="Cidade"/>
-							<p:inputText id="cidade" value="#{pessoaMidiaMB.cidade.nome}"/>
-							
-							<h:outputLabel value="Bloco"/>
-							<p:inputText value="#{pessoaMidiaMB.bloco.nome}"/>
-							
-							<h:outputLabel value="Bairro"/>
-							<p:inputText id="bairro" value="#{pessoaMidiaMB.pessoaMidia.bairro}"/>
-							
-							<h:outputLabel value="Endereço"/>
-							<p:inputText id="endereco" value="#{pessoaMidiaMB.pessoaMidia.endereco}"/>
-							
-							<h:outputLabel value="N°"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.numEnd}"/>
-						</p:panelGrid>
-					</div>
-				
-					<div id="form-contatos">
-						<h3><b>Formação</b></h3>
-						<p:separator/>
-						<p:panelGrid columns="2">
-							<h:outputLabel value="Grau Instrução"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.instagram}"/>
-							
-							<h:outputLabel value="Formação"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.formacao}"/>
-							
-							<h:outputLabel value="Idiomas"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.idiomas}"/>
-						</p:panelGrid>
-					</div>	
-				
-					<div id="form-projeto">
-						<h3><b>Projeto MIDIA</b></h3>
-						<p:separator/>
-						<p:panelGrid columns="2">
-							<h:outputLabel value="Cursos"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.cursos}"/>
-														
-							<h:outputLabel value="Equipamento"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.equipamentos}"/>
-							
-							<h:outputLabel value="Departamento"/>
-							<p:inputText value="#{pessoaMidiaMB.pessoaMidia.departamento}"/>	
-							
-						</p:panelGrid>
-					</div>	
-				
-					<br/>
+		<h1>Cadastro</h1>
+
+		 	<div id="form-pessoais" class="col-md-12">
+				<h3><b>Dados Pessoais</b></h3>
+				<p:separator/>
+					<p:panelGrid columns="2">
 					
-			
-				<div class="row">
-					<h:commandLink value="Cadastrar" action="#{pessoaMidiaMB.cadastrarPessoa}" styleClass="span6 btn btn-lg btn-block btn-success" style="border-radius:0px;"/>
-					<h:commandLink value="Cancelar" action="Cadastro.xhtml" styleClass="span6 btn btn-lg btn-block btn-danger" style="border-radius:0px;"/>
-				</div>
-				
-			</ui:define>
-		</ui:composition>
+						<h:outputLabel value="Nome"/>
+						<p:inputText id="nome" value="#{pessoaMidiaMB.pessoaMidia.nome}" label="Nome"/>
+						
+						<h:outputLabel value="Nascimento" />
+						<p:calendar locale="pt" value="#{pessoaMidiaMB.pessoaMidia.dtNasc}" showButtonPanel="true" navigator="true" id="ptCal" showOn="button" />
+						
+						<h:outputLabel value="Sexo"/>
+						<h:selectOneRadio value="#{pessoaMidiaMB.pessoaMidia.sexo}">
+							<f:selectItem itemValue="M" itemLabel="Masculino"/>
+							<f:selectItem itemValue="F" itemLabel="Feminino"/>
+						</h:selectOneRadio>
+						
+						<h:outputLabel value="Telefone"/>
+						<p:inputText value="#{pessoaMidiaMB.pessoaMidia.telefone}"/>
+						
+						<h:outputLabel value="Celular"/>
+						<p:inputText value="#{pessoaMidiaMB.pessoaMidia.celular}"/>
+						
+						<h:outputLabel value="E-mail"/>
+						<p:inputText value="#{pessoaMidiaMB.pessoaMidia.email}"/>
+						
+						<h:outputLabel value="Instagram"/>
+						<p:inputText value="#{pessoaMidiaMB.pessoaMidia.instagram}"/>
+						
+					</p:panelGrid>
+			</div>	
 		
+			<div id="form-endereco" class="col-md-12">
+				<h3><b>Endereço</b></h3>
+				<p:separator/>
+					<p:panelGrid columns="2">
+					
+						<h:outputLabel value="CEP"/>
+						<p:inputText id="cep" value="#{pessoaMidiaMB.cep}">
+							<p:ajax event="blur" 
+									update="cidade endereco bairro estado" 
+									listener="#{pessoaMidiaMB.buscaLogradouro}"/>
+							<p:ajax event="blur"
+									listener="#{blocoMB.popularBlocoMap}"
+									update="bloco"
+									process="@this"
+									partialSubmit="true"/>
+							<p:ajax event="blur"
+									listener="#{cidadeMB.popularCidadeMap}"
+									update="cidade"
+									process="@this"
+									partialSubmit="true"/>		
+						</p:inputText>
+						
+						<h:outputLabel value="*Estado"/>
+	                    <h:selectOneMenu id="estado" value="#{pessoaMidiaMB.estadoSelecionado}">
+	                        <f:selectItems value="#{estadoMB.estadoMap.entrySet()}" var="est"
+	                                       itemLabel="#{est.value}"
+	                                       itemValue="#{est.key}"/>
+	                        <p:ajax event="change"
+									listener="#{blocoMB.popularBlocoMap}"
+									update="bloco"
+									process="@this"
+									partialSubmit="true"/>      
+							<p:ajax event="change"
+									listener="#{cidadeMB.popularCidadeMap}"
+									update="cidade"
+									process="@this"
+									partialSubmit="true"/>       		         
+	                    </h:selectOneMenu>
+						
+						<h:outputLabel value="Cidade"/>
+						<h:selectOneMenu id="cidade" value="#{pessoaMidiaMB.cidadeSelecionada}">
+						<f:selectItems value="#{cidadeMB.cidadeMap.entrySet()}" var="cid"
+									   itemLabel="#{cid.value}"
+									   itemValue="#{cid.key}"/>
+						</h:selectOneMenu>
+						
+						<h:outputLabel value="Bloco"/>
+						<h:selectOneMenu id="bloco" value="#{pessoaMidiaMB.blocoSelecionado}">
+							<f:selectItems value="#{blocoMB.blocoMap.entrySet()}" var="blo"
+										   itemLabel="#{blo.value}"
+										   itemValue="#{blo.key}"/>
+						</h:selectOneMenu>
+						
+						<h:outputLabel value="Bairro"/>
+						<p:inputText id="bairro" value="#{pessoaMidiaMB.pessoaMidia.bairro}"/>
+						
+						<h:outputLabel value="Endereço"/>
+						<p:inputText id="endereco" value="#{pessoaMidiaMB.pessoaMidia.endereco}"/>
+						
+						<h:outputLabel value="N°"/>
+						<p:inputText value="#{pessoaMidiaMB.pessoaMidia.numEnd}"/>
+					</p:panelGrid>
+			</div>
+		
+			<div id="form-contatos">
+				<h3><b>Formação</b></h3>
+				<p:separator/>
+				<p:panelGrid columns="2">
+					<h:outputLabel value="Grau Instrução"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.instagram}"/>
+					
+					<h:outputLabel value="Formação"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.formacao}"/>
+					
+					<h:outputLabel value="Idiomas"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.idiomas}"/>
+				</p:panelGrid>
+			</div>	
+		
+			<div id="form-projeto">
+				<h3><b>Projeto MIDIA</b></h3>
+				<p:separator/>
+				<p:panelGrid columns="2">
+					<h:outputLabel value="Cursos"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.cursos}"/>
+												
+					<h:outputLabel value="Equipamento"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.equipamentos}"/>
+					
+					<h:outputLabel value="Departamento"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.departamento}"/>	
+					
+				</p:panelGrid>
+			</div>	
+		
+			<br/>
+			
+	
+		<div>
+				<h:commandLink value="Cadastrar" action="#{pessoaMidiaMB.cadastrarPessoa}" styleClass="span5 btn btn-lg btn-block btn-success" style="border-radius:0px;"/>
+				<h:commandLink value="Cancelar" action="NewFile.xhtml" styleClass="span5 btn btn-lg btn-block btn-danger" style="border-radius:0px;"/>
+		</div>
+			
+	</ui:composition>
+	
 	
 </h:body>
 </html>

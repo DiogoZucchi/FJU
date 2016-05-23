@@ -10,6 +10,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
 import model.Cidade;
+import model.Estado;
 
 public class CidadeDao {
 	
@@ -51,7 +52,7 @@ public class CidadeDao {
 		}
 	}
 	
-	public Cidade listarUm(String nome, String uf) {
+	public Cidade listarUm(String nome, Estado estado) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		try {
 			CriteriaBuilder cb = manager.getCriteriaBuilder();
@@ -62,8 +63,8 @@ public class CidadeDao {
 		    Path<String> restricaoNome = root.get("nome");
 		    cq.where(cb.and(cb.equal(restricaoNome, nome)));
 		    
-		    Path<String> restricaoUF = root.get("estado_uf");
-		    cq.where(cb.and(cb.equal(restricaoUF, uf)));
+		    Path<String> restricaoUF = root.get("estado");
+		    cq.where(cb.and(cb.equal(restricaoUF, estado)));
 		    
 			TypedQuery<Cidade> query = manager.createQuery(cq);
 			
@@ -75,7 +76,7 @@ public class CidadeDao {
 		}
 	}
 	
-	public ArrayList<Cidade> listarTodos() {
+	public ArrayList<Cidade> listarTodos(Estado estado) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
@@ -83,6 +84,9 @@ public class CidadeDao {
 			CriteriaQuery<Cidade> cq = cb.createQuery(Cidade.class);
 			Root<Cidade> root = cq.from(Cidade.class);
 			cq.select(root);
+			
+		    Path<String> restricaoUF = root.get("estado_uf");
+		    cq.where(cb.and(cb.equal(restricaoUF, estado)));
 			
 			TypedQuery<Cidade> query = manager.createQuery(cq);
 			

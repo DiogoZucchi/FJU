@@ -51,10 +51,14 @@ li: hover {
 	color: #00BFFF;
 }
 
+.btn.focus {
+	color: white;
+}
+
 .ui-widget-content a {
 	color: #1E90FF;
 }
 
-.font-template-esq a {
+.botao-selecionado a {
 	color: white;
 }

@@ -7,7 +7,7 @@ public class Pessoa {
 	private String nome;
 	private Date dtNasc;
 	private char sexo;
-	private int cep;
+	private String cep;
 	private Estado estado;
 	private Cidade cidade;
 	private String endereco;
@@ -23,11 +23,11 @@ public class Pessoa {
 	private String formacao;
 	private String idiomas;
 	private Date dataDoCadastro;
-
-	public int getCep() {
+	
+	public String getCep() {
 		return cep;
 	}
-	public void setCep(int cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 	public DadosEspirituais getDadosEspirituais() {

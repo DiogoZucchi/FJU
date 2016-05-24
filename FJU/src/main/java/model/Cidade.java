@@ -14,7 +14,6 @@ import javax.persistence.Table;
 public class Cidade {
 
 	@Id
-	@Column(name="codigo")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int codigo;
 	
@@ -22,10 +21,11 @@ public class Cidade {
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name="bloco_codigo")
+	@JoinColumn(name="bloco_id")
 	private Bloco bloco;
 	
 	@ManyToOne
+	@JoinColumn(name="estado_id")
 	private Estado estado;
 
 	//GET / SET

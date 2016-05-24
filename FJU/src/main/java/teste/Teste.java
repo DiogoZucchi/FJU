@@ -17,14 +17,16 @@ import dao.EstadoDao;
 import model.Aluno;
 import model.Bloco;
 import model.Cidade;
+import model.DadosEspirituais;
 import model.Estado;
+import model.PessoaMidia;
 import model.Sala;
 
 public class Teste {
 	public static void main(String[] args) {
 		//ESCOPOS DO MANAGEDBEAN
-		//EntityManagerFactory factory = Persistence.createEntityManagerFactory("teste");
-		//EntityManager manager = factory.createEntityManager();
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("teste");
+		EntityManager manager = factory.createEntityManager();
 //		EntityTransaction trx = manager.getTransaction();
 //		trx.begin();
 		
@@ -60,16 +62,24 @@ public class Teste {
 		bloco.getCidades().add(cidade);
 		manager.merge(bloco);
 		*/
-		
+		/*
 		//LISTAR UM ESTADO.
 		EstadoDao estadoDao = new EstadoDao();
 		Estado estado = estadoDao.listarUm("SC"); 
-		//System.out.println(estado.toString());
-		
+		System.out.println(estado.toString());
+		*//*
 		//LISTAR UMA CIDADE.
 		CidadeDao cidadeDao = new CidadeDao();
 		Cidade cidade = cidadeDao.listarUm("Blumenau", estado);
 		System.out.println(cidade.toString());
+		*/
+		
+		DadosEspirituais de = new DadosEspirituais();
+		/*PessoaMidia pessoaMidia = new PessoaMidia();
+		pessoaMidia.setNome("Diogo");
+		pessoaMidia.setDadosEspirituais(de);*/
+		manager.persist(de);
+		//manager.persist(pessoaMidia);
 		
 		/*Sala sala = new Sala();
 		sala.setDescricao("Sala");

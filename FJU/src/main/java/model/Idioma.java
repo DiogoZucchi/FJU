@@ -5,41 +5,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="aluno")
-public class Aluno {
+@Table(name="idioma")
+public class Idioma {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int codigo;
+	
+	@Column(name="nivel")
+	private int nivel;
 	
 	@Column(name="descricao")
 	private String descricao;
 	
-	@ManyToOne
-	private Sala sala;
-	
-	// GET / SET.
-	public Long getId() {
-		return id;
+	//GET - SET.
+	public int getCodigo() {
+		return codigo;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	public int getNivel() {
+		return nivel;
+	}
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 	public String getDescricao() {
 		return descricao;
 	}
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-	public Sala getSala() {
-		return sala;
-	}
-	public void setSala(Sala sala) {
-		this.sala = sala;
 	}
 }

@@ -3,12 +3,14 @@ package controller;
 import java.util.LinkedHashMap;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import dao.CidadeDao;
 import dao.EstadoDao;
 import model.Cidade;
 
 @ManagedBean(name="cidadeMB")
+@SessionScoped
 public class CidadeMB {
 	
 	static String estadoSelected;

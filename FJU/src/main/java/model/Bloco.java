@@ -21,7 +21,6 @@ public class Bloco {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="codigo")
 	private int codigo;
 	
 	@Column(name="nome")

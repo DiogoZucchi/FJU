@@ -1,29 +1,96 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="tipo", length=3, discriminatorType=DiscriminatorType.STRING)
+@DiscriminatorValue("Pes")
 public class Pessoa {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int codigo;
+	
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="dtNasc")
 	private Date dtNasc;
+	
+	@Column(name="sexo")
 	private char sexo;
+	
+	@Column(name="cep")
 	private String cep;
+	
+	@ManyToOne
+	@JoinColumn(name="estado_uf")
 	private Estado estado;
+	
+	@ManyToOne
+	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
+	
+	@Column(name="endereco")
 	private String endereco;
+	
+	@Column(name="numEnd")
 	private int numEnd;
+	
+	@ManyToOne
+	@JoinColumn(name="dadosEspirituais_id")
 	private DadosEspirituais dadosEspirituais;
+	
+	@ManyToOne
+	@JoinColumn(name="bloco_id")
 	private Bloco bloco;
+	
+	@Column(name="bairro")
 	private String bairro;
+	
+	@Column(name="telefone")
 	private String telefone;
+	
+	@Column(name="celular")
 	private String celular;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="instagram")
 	private String instagram;
+	
+	@Column(name="grauInst")
 	private String grauInstrucao;
+	
+	@Column(name="formacao")
 	private String formacao;
-	private String idiomas;
+	
+	@ManyToMany
+    @JoinTable(name="pessoa_tem_idioma", joinColumns= @JoinColumn(name="pessoa_id"), inverseJoinColumns= @JoinColumn(name="idioma_id"))
+	private List<Idioma> idiomas;
+	
+	@Column(name="cep")
 	private Date dataDoCadastro;
 	
+	//GET - SET.
 	public String getCep() {
 		return cep;
 	}
@@ -126,12 +193,6 @@ public class Pessoa {
 	public void setFormacao(String formacao) {
 		this.formacao = formacao;
 	}
-	public String getIdiomas() {
-		return idiomas;
-	}
-	public void setIdiomas(String idiomas) {
-		this.idiomas = idiomas;
-	}
 	public Date getDataDoCadastro() {
 		return dataDoCadastro;
 	}
@@ -143,5 +204,11 @@ public class Pessoa {
 	}
 	public void setSexo(char sexo) {
 		this.sexo = sexo;
+	}
+	public List<Idioma> getIdiomas() {
+		return idiomas;
+	}
+	public void setIdiomas(List<Idioma> idiomas) {
+		this.idiomas = idiomas;
 	}
 }

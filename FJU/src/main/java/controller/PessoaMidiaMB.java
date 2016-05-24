@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import dao.BlocoDao;
 import dao.CidadeDao;
@@ -76,7 +77,6 @@ public class PessoaMidiaMB {
 		//*************
 		//INSERT BLOCO.
 		BlocoDao blocoDao = new BlocoDao();
-		System.out.println(blocoSelecionado);
 		pessoaMidia.setBloco(blocoDao.listarUm(blocoSelecionado));
 		//**************
 		//INSERT CIDADE.

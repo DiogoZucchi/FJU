@@ -4,13 +4,14 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.swing.plaf.synth.SynthSpinnerUI;
+import javax.faces.bean.SessionScoped;
 
 import dao.BlocoDao;
 import model.Bloco;
 import model.Estado;
 
 @ManagedBean(name="blocoMB")
+@SessionScoped
 public class BlocoMB {
 	private Bloco bloco;
 	private Estado estado;
@@ -20,8 +21,6 @@ public class BlocoMB {
 	public BlocoMB() {
 		bloco = new Bloco();
 		estado = new Estado();
-	
-		//AAAAAAAAAA
 	}
 	
 	public void popularBlocoMap() {

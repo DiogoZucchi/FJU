@@ -20,6 +20,8 @@ public class BlocoMB {
 	public BlocoMB() {
 		bloco = new Bloco();
 		estado = new Estado();
+	
+		//AAAAAAAAAA
 	}
 	
 	public void popularBlocoMap() {

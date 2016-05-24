@@ -22,7 +22,7 @@ public class PessoaMidiaMB {
 	
 	private String cep;
 	private String estadoSelecionado;
-	private String blocoSelecionado;
+	private int blocoSelecionado;
 	private String cidadeSelecionada;
 	private String sexoSelecionado;
 	
@@ -63,7 +63,7 @@ public class PessoaMidiaMB {
 	//CADASTRAR.
 	public String cadastrarPessoa() {
 		
-		
+		System.out.println("Entro1");
 		//****************
 		//*** ENDEREÇO ***
 		//****************
@@ -76,15 +76,12 @@ public class PessoaMidiaMB {
 		//*************
 		//INSERT BLOCO.
 		BlocoDao blocoDao = new BlocoDao();
-		Bloco bloco = blocoDao.listarUm(Integer.parseInt(blocoSelecionado));
-		pessoaMidia.setBloco(bloco);
+		System.out.println(blocoSelecionado);
+		pessoaMidia.setBloco(blocoDao.listarUm(blocoSelecionado));
 		//**************
 		//INSERT CIDADE.
-		/*CidadeDao cidadeDao = new CidadeDao();
-		setCidade(cidadeDao.listarUm(getCidade().getNome(), estadoSelecionado));
-		getCidade().setBloco(bloco);
-		cidadeDao.inserir(getCidade());
-		pessoaMidia.setCidade(getCidade());*/
+		CidadeDao cidadeDao = new CidadeDao();
+		pessoaMidia.setCidade(cidadeDao.listarUm(cidadeSelecionada, estado));
 		//**************
 		
 		//INSERT PESSOA MIDIA.
@@ -123,10 +120,10 @@ public class PessoaMidiaMB {
 	public void setPessoaMidia(PessoaMidia pessoaMidia) {
 		this.pessoaMidia = pessoaMidia;
 	}
-	public String getBlocoSelecionado() {
+	public int getBlocoSelecionado() {
 		return blocoSelecionado;
 	}
-	public void setBlocoSelecionado(String blocoSelecionado) {
+	public void setBlocoSelecionado(int blocoSelecionado) {
 		this.blocoSelecionado = blocoSelecionado;
 	}
 	public String getCidadeSelecionada() {

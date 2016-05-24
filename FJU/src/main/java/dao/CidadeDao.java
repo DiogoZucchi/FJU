@@ -85,7 +85,7 @@ public class CidadeDao {
 			Root<Cidade> root = cq.from(Cidade.class);
 			cq.select(root);
 			
-		    Path<String> restricaoUF = root.get("estado_uf");
+		    Path<String> restricaoUF = root.get("estado");
 		    cq.where(cb.and(cb.equal(restricaoUF, estado)));
 			
 			TypedQuery<Cidade> query = manager.createQuery(cq);

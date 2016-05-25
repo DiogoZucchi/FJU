@@ -1,21 +1,17 @@
 package model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="estado")
 public class Estado {
 	
 	@Id
-	@Column(name="uf")
 	private String uf;
-	
-	@Column(name="nome")
-	private String nome;
 
+	private String nome;
+	
+	//GET - SET.
 	public String getUf() {
 		return uf;
 	}

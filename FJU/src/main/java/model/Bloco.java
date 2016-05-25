@@ -1,9 +1,5 @@
 package model;
 
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,12 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 
 @Entity
-@Table(name="bloco")
 public class Bloco {
 	
 	@Id
@@ -30,16 +23,7 @@ public class Bloco {
 	@JoinColumn(name="estado_uf")
 	private Estado estado;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="bloco")
-	private List<Cidade> cidades;
-	
-	//CONSTRUTOR.
-	public Bloco() {
-		estado = new Estado();
-		cidades = new LinkedList<Cidade>();
-	}
-	
-	//GET / SET.
+	//GET - SET.
 	public int getCodigo() {
 		return codigo;
 	}
@@ -57,11 +41,5 @@ public class Bloco {
 	}
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-	}
-	public List<Cidade> getCidades() {
-		return cidades;
-	}
-	public void setCidades(LinkedList<Cidade> cidades) {
-		this.cidades = cidades;
 	}
 }

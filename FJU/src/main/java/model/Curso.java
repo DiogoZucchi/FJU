@@ -1,24 +1,19 @@
 package model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="curso")
 public class Curso {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int codigo;
 	
-	@Column(name="descricao")
-	private String descrição;
+	private String descricao;
 	
-	@Column(name="mesesDuracao")
 	private int mesesDuracao;
 
 	//GET - SET.
@@ -28,11 +23,11 @@ public class Curso {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public String getDescrição() {
-		return descrição;
+	public String getDescricao() {
+		return descricao;
 	}
-	public void setDescrição(String descrição) {
-		this.descrição = descrição;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	public int getMesesDuracao() {
 		return mesesDuracao;

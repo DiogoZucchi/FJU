@@ -1,6 +1,8 @@
 package teste;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,34 +16,33 @@ import org.hibernate.cfg.Configuration;
 
 import dao.CidadeDao;
 import dao.EstadoDao;
-import model.Aluno;
 import model.Bloco;
 import model.Cidade;
 import model.DadosEspirituais;
+import model.Equipamento;
 import model.Estado;
+import model.Idioma;
 import model.PessoaMidia;
-import model.Sala;
 
 public class Teste {
 	public static void main(String[] args) {
 		//ESCOPOS DO MANAGEDBEAN
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("teste");
 		EntityManager manager = factory.createEntityManager();
-//		EntityTransaction trx = manager.getTransaction();
-//		trx.begin();
+		EntityTransaction trx = manager.getTransaction();
+		trx.begin();
 		
-		//manager.getTransaction().begin();
 		
-		/*SessionFactory fabrica = new Configuration().configure().buildSessionFactory();
-		Session sessao = fabrica.openSession();
-		Transaction txAluno = sessao.beginTransaction();
-		*/
+//		manager.getTransaction().begin();
+//		SessionFactory fabrica = new Configuration().configure().buildSessionFactory();
+//		Session sessao = fabrica.openSession();
+//		Transaction txAluno = sessao.beginTransaction();
 		
-		/*Aluno aluno = manager.find(Aluno.class, (long)2);
-		System.out.println(aluno.getDescricao());
-		manager.remove(aluno);*/
 		
-		/*		
+		//***********************************************************************
+		//           			 ESTADO / BLOCO / CIDADE
+		//***********************************************************************
+				
 		//INSERIR ESTADO.
 		Estado estado = new Estado();
 		estado.setNome("Santa Catarina");
@@ -58,10 +59,7 @@ public class Teste {
 		cidade.setEstado(estado);
 		cidade.setNome("Blumenau");
 		manager.persist(cidade);
-		//UPDATE - BLOCO
-		bloco.getCidades().add(cidade);
-		manager.merge(bloco);
-		*/
+		
 		/*
 		//LISTAR UM ESTADO.
 		EstadoDao estadoDao = new EstadoDao();
@@ -73,29 +71,48 @@ public class Teste {
 		Cidade cidade = cidadeDao.listarUm("Blumenau", estado);
 		System.out.println(cidade.toString());
 		*/
+		//***********************************************************************
 		
+		//***********************************************************************
+		//				   DADOS ESPIRITUAIS / IDIOMA / EQUIPAMENTO
+		//***********************************************************************
 		DadosEspirituais de = new DadosEspirituais();
-		/*PessoaMidia pessoaMidia = new PessoaMidia();
-		pessoaMidia.setNome("Diogo");
-		pessoaMidia.setDadosEspirituais(de);*/
+		de.setDtBatismo(new Date());
+		de.setDtEspiritoSanto(new Date());
+		de.setDtInicioFJU(new Date());
+		de.setDtInicioUniversal(new Date());
+		de.setObreiro(true);
 		manager.persist(de);
-		//manager.persist(pessoaMidia);
 		
-		/*Sala sala = new Sala();
-		sala.setDescricao("Sala");
+		LinkedList<Idioma> idiomas = new LinkedList<Idioma>();
+		Idioma idioma = new Idioma();
+		idioma.setDescricao("Alemon");
+		idioma.setNivel(2);
+		manager.persist(idioma);
+		idiomas.add(idioma);
 		
-		Aluno aluno = new Aluno();
-		aluno.setDescricao("Rafael21");
-		aluno.setSala(sala);
+		LinkedList<Equipamento> equipamentos = new LinkedList<Equipamento>();
+		Equipamento equi = new Equipamento();
+		equi.setDescricao("Camera");
+		manager.persist(equi);
+		equipamentos.add(equi);
 		
-		ArrayList<Aluno> alunos = new ArrayList<Aluno>();
-		alunos.add(aluno);
-
-		sala.setAlunos(alunos);
-
-		manager.persist(sala);*/
+		//***********************************************************************
+		//								PESSOA MIDIA
+		//***********************************************************************
+		PessoaMidia pessoaMidia = new PessoaMidia();
+		pessoaMidia.setNome("Diogo");
+		pessoaMidia.setDepartamento(1);
+		pessoaMidia.setEstado(estado);
+		pessoaMidia.setBloco(bloco);
+		pessoaMidia.setCidade(cidade);
+		pessoaMidia.setDadosEspirituais(de);
+		pessoaMidia.setEquipamentos(equipamentos);
+		pessoaMidia.setIdiomas(idiomas);
+		manager.persist(pessoaMidia);
+		//***********************************************************************
 		
-		//manager.getTransaction().commit();
-		//manager.close();
+		manager.getTransaction().commit();
+		manager.close();
 	}
 }

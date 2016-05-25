@@ -4,19 +4,20 @@ import java.io.IOException;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import dao.UsuarioDao;
 import model.Usuario;
 
 @ManagedBean(name="usuarioMB")
+@SessionScoped
 public class UsuarioMB {
 	
-	private UsuarioDao usuarioDao = new UsuarioDao();
-	private Usuario usuario = new Usuario();
+	static Usuario usuario = new Usuario();
 	
 	 public String enviar() {
-		  System.out.println("awd");
+		 UsuarioDao usuarioDao = new UsuarioDao();
          usuario = usuarioDao.listarUm(usuario);
          if (usuario == null) {
                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!",
@@ -24,19 +25,14 @@ public class UsuarioMB {
                return null;
          } else {
         	 try {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("Main.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("Index.xhtml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-               return "main";
+               return null;
          }
 	 }
 	 
-	 public void enviar2() {
-         System.out.println("awd");
-         //return "main";
-	 }
-
 	public Usuario getUsuario() {
 		return usuario;
 	}

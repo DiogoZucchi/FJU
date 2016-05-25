@@ -1,4 +1,4 @@
-package teste;
+package model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,12 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
-import model.Bloco;
-import model.Cidade;
-import model.DadosEspirituais;
-import model.Estado;
-import model.Idioma;
 
 @Entity
 @Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)

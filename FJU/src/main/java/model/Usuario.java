@@ -16,6 +16,8 @@ public class Usuario {
 	
 	private String password;
 	
+	private int nivel;
+	
 	//CONSTRUTOR.
 	public Usuario(String login, String password) {
 		setLogin(login);
@@ -44,5 +46,11 @@ public class Usuario {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public int getNivel() {
+		return nivel;
+	}
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 }

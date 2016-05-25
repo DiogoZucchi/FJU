@@ -10,10 +10,10 @@ public class TemplateMB {
 	private String opcaoTemplate;
 	
 	public void opCadastro(){
-		setOpcaoTemplate("Layout.xhtml");
+		setOpcaoTemplate("Cadastro.xhtml");
 	}
 	public void opListar(){
-		setOpcaoTemplate("Main.xhtml");
+		setOpcaoTemplate("Listar.xhtml");
 	}
 	public void opBloco(){
 		setOpcaoTemplate("Bloco.xhtml");

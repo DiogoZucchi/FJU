@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:opt="http://primefaces.prime.com.tr/optimus"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+</h:head>
+<body>
+	<ui:composition>
+	
+		<h1>Listar</h1>
+		<p:separator/>
+		
+		<h3>Filtro</h3>
+		<p:panelGrid columns="2">
+			<h:outputLabel value="Nome: "/>
+			<p:inputText />
+		</p:panelGrid>
+		
+		<p:separator/>
+		<p:dataTable var="pessoa" value="#{listarMB.pessoas}">
+		
+		    <p:column headerText="Nome">
+		        <h:outputText value="#{pessoa.nome}" />
+		    </p:column>
+		    
+		    <p:column headerText="Departamento">
+		        <h:outputText value="#{pessoa.departamento}" />
+		    </p:column>
+		 
+		 	<p:column headerText="Estado">
+		        <h:outputText value="#{pessoa.estado.nome}" />
+		    </p:column>
+		 
+		 	<p:column headerText="Bloco">
+		        <h:outputText value="#{pessoa.bloco.nome}" />
+		    </p:column>
+		    
+		    <p:column headerText="Cidade">
+		        <h:outputText value="#{pessoa.cidade.nome}" />
+		    </p:column>
+		 
+		</p:dataTable>
+		
+	</ui:composition>
+</body>
+</html>
+

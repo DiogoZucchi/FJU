@@ -18,6 +18,7 @@ import dao.CidadeDao;
 import dao.EstadoDao;
 import model.Bloco;
 import model.Cidade;
+import model.Curso;
 import model.DadosEspirituais;
 import model.Equipamento;
 import model.Estado;
@@ -42,7 +43,7 @@ public class Teste {
 		//***********************************************************************
 		//           			 ESTADO / BLOCO / CIDADE
 		//***********************************************************************
-				
+		/*		
 		//INSERIR ESTADO.
 		Estado estado = new Estado();
 		estado.setNome("Santa Catarina");
@@ -59,7 +60,7 @@ public class Teste {
 		cidade.setEstado(estado);
 		cidade.setNome("Blumenau");
 		manager.persist(cidade);
-		
+		*/
 		/*
 		//LISTAR UM ESTADO.
 		EstadoDao estadoDao = new EstadoDao();
@@ -74,9 +75,9 @@ public class Teste {
 		//***********************************************************************
 		
 		//***********************************************************************
-		//				   DADOS ESPIRITUAIS / IDIOMA / EQUIPAMENTO
+		//			 DADOS ESPIRITUAIS / IDIOMA / EQUIPAMENTO / CURSO
 		//***********************************************************************
-		DadosEspirituais de = new DadosEspirituais();
+		/*DadosEspirituais de = new DadosEspirituais();
 		de.setDtBatismo(new Date());
 		de.setDtEspiritoSanto(new Date());
 		de.setDtInicioFJU(new Date());
@@ -97,19 +98,27 @@ public class Teste {
 		manager.persist(equi);
 		equipamentos.add(equi);
 		
+		LinkedList<Curso> cursos = new LinkedList<Curso>();
+		Curso cur = new Curso();
+		cur.setDescricao("ADM");
+		cur.setMesesDuracao(2);
+		manager.persist(cur);
+		cursos.add(cur);*/
+		
 		//***********************************************************************
 		//								PESSOA MIDIA
 		//***********************************************************************
-		PessoaMidia pessoaMidia = new PessoaMidia();
+		/*PessoaMidia pessoaMidia = new PessoaMidia();
 		pessoaMidia.setNome("Diogo");
-		pessoaMidia.setDepartamento(1);
+		pessoaMidia.setDepartamento("Mídia");
 		pessoaMidia.setEstado(estado);
 		pessoaMidia.setBloco(bloco);
 		pessoaMidia.setCidade(cidade);
 		pessoaMidia.setDadosEspirituais(de);
 		pessoaMidia.setEquipamentos(equipamentos);
 		pessoaMidia.setIdiomas(idiomas);
-		manager.persist(pessoaMidia);
+		pessoaMidia.setCursos(cursos);
+		manager.persist(pessoaMidia);*/
 		//***********************************************************************
 		
 		manager.getTransaction().commit();

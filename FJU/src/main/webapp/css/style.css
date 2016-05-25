@@ -62,3 +62,13 @@ li: hover {
 .botao-selecionado a {
 	color: white;
 }
+
+.texto {
+	position: fixed;
+	color: white;
+	padding-top: -70px;
+	z-index: 1031;
+}
+.texto: hover {
+	color: gray;
+}

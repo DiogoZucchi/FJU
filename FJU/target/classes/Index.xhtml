@@ -49,23 +49,25 @@
 
 <h:body>
     
+	<p:growl id="messages" />
 	<h:form>    
 	 	<p:menubar style="background:#363636" styleClass="navbar navbar-fixed-top">
-	        <p:menuitem value="FJU" style="font-size: 25px;"/>
 	        <f:facet name="options">
-	            <p:menuButton value="Diogo Zucchi" style="margin-right:10px; margin-top:10px;">
-			        <p:menuitem value="Sair" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+	            <p:menuButton value="#{usuarioMB.usuario.login}" style="margin-right:10px; margin-top:10px;">
+			        <p:menuitem value="Sair" update="messages" icon="ui-icon-arrowrefresh-1-w" action="#{logoutMB.deslogar}"/>
 			    </p:menuButton>
 	        </f:facet>
 	    </p:menubar>
     </h:form>
-	<p:growl id="messages" />
+    
+	<p:commandLink value="FJU" style="font-size: 25px;" styleClass="btn btn-block texto span1" action="Index"/>    
     
 	<div class="container-fluid" style="height: 100%">
   		<div class="row-fluid" style="height: 100%">
     		
     		<div id="template-esquerdo" class="span2" style="background-color:#eee;height: 100%;margin-left: -12px;position: fixed;">
       			<h:form>
+
       				
       				<div id="template-left" style="margin-top: 100px">
 	    				<div id="bt1">
@@ -74,7 +76,7 @@
 					    	</h:commandLink>
 	    				</div>
 				    	<div id="bt2">
-					    	<h:commandLink value="Usuários" actionListener="#{templateMB.opListar}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+					    	<h:commandLink value="Listar" actionListener="#{templateMB.opListar}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
 					    		<p:ajax update="content"/> 
 					    	</h:commandLink>
 					    </div>

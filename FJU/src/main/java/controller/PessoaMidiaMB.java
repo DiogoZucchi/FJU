@@ -1,17 +1,12 @@
 package controller;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 
 import dao.BlocoDao;
 import dao.CidadeDao;
 import dao.EstadoDao;
 import dao.PessoaMidiaDao;
-import model.Bloco;
-import model.Cidade;
 import model.Estado;
 import model.PessoaMidia;
 import teste.CepWebService;
@@ -83,13 +78,15 @@ public class PessoaMidiaMB {
 		CidadeDao cidadeDao = new CidadeDao();
 		pessoaMidia.setCidade(cidadeDao.listarUm(cidadeSelecionada, estado));
 		//**************
-		
+		//DEPARTAMENTO
+		pessoaMidia.setDepartamento("Mídia");
+		//**************		
 		//INSERT PESSOA MIDIA.
 		pessoaMidiaDao = new PessoaMidiaDao();
 		pessoaMidiaDao.inserir(this.pessoaMidia);
 		//********************
-		  
-		return "main";
+		
+		return "Main";
 	}
 
 	public String getCep() {

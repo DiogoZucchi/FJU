@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
 
 import model.PessoaMidia;
 
@@ -47,12 +51,22 @@ public class PessoaMidiaDao {
 		}
 	}
 	
-	public PessoaMidia listarUm(int id) {
+	public PessoaMidia listarUm(int codigo) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		try {
-			return manager.find(PessoaMidia.class, id);
-		}catch(Exception e){
-			return null;
+			CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<PessoaMidia> cq = cb.createQuery(PessoaMidia.class);
+			Root<PessoaMidia> root = cq.from(PessoaMidia.class);
+			cq.select(root);
+			
+		    Path<String> restricaoCodigo = root.get("codigo");
+		    cq.where(cb.and(cb.equal(restricaoCodigo, codigo)));
+		    
+			TypedQuery<PessoaMidia> query = manager.createQuery(cq);
+			
+			if(query.getResultList().isEmpty())
+				return null;
+			return query.getResultList().get(0);
 		} finally {
 			manager.close();
 		}
@@ -62,8 +76,14 @@ public class PessoaMidiaDao {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
-			TypedQuery<PessoaMidia> consulta = manager.createQuery("SELECT id,login,password FROM PessoaMidia", PessoaMidia.class);
-			return (ArrayList<PessoaMidia>) consulta.getResultList();
+			CriteriaBuilder cb = manager.getCriteriaBuilder();
+			CriteriaQuery<PessoaMidia> cq = cb.createQuery(PessoaMidia.class);
+			Root<PessoaMidia> root = cq.from(PessoaMidia.class);
+			cq.select(root);
+			
+			TypedQuery<PessoaMidia> query = manager.createQuery(cq);
+			
+			return (ArrayList<PessoaMidia>) query.getResultList();
 		} finally {
 			manager.close();
 		}

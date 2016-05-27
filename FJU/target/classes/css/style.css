@@ -72,3 +72,12 @@ li: hover {
 .texto: hover {
 	color: gray;
 }
+.ui-tabs.ui-tabs-top > .ui-tabs-nav {
+	background: white;
+}
+
+.ui-datatable thead th, .ui-datatable tfoot td {
+	background: #337ab7;
+	color: white;
+	text-shadow: none;
+}

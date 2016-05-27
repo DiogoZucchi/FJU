@@ -19,10 +19,72 @@
 		<p:separator/>
 		
 		<h3>Filtro</h3>
-		<p:panelGrid columns="2">
-			<h:outputLabel value="Nome: "/>
-			<p:inputText />
-		</p:panelGrid>
+		
+		<p:tabView style="border: none; background: white">
+	        <p:tab title="Pessoal">
+	            <h:panelGrid columns="2" cellpadding="100" cellspacing="100" >
+	                <h:outputLabel value="Nome: "/>
+					<p:inputText />
+					<p:outputLabel for="sexo" value="Sexo:" />
+			    	<p:selectOneRadio id="sexo" value="#{pessoaMidiaMB.pessoaMidia.sexo}"  layout="grid" columns="1">
+			            <f:selectItem itemValue="M" itemLabel="Masculino"/>
+						<f:selectItem itemValue="F" itemLabel="Feminino"/>
+			    	</p:selectOneRadio>
+	            </h:panelGrid>
+	        </p:tab>
+	        <p:tab title="Endereço">
+	            <h:panelGrid columns="2" cellpadding="10">
+	                
+	                <h:outputLabel value="Estado"/>
+                    <h:selectOneMenu id="estado" value="#{pessoaMidiaMB.estadoSelecionado}">
+                        <f:selectItems value="#{estadoMB.estadoMap.entrySet()}" var="est"
+                                       itemLabel="#{est.value}"
+                                       itemValue="#{est.key}"/>
+                        <p:ajax event="change"
+								listener="#{blocoMB.popularBlocoMap}"
+								update="bloco"
+								process="@this"
+								partialSubmit="true"/>      
+						<p:ajax event="change"
+								listener="#{cidadeMB.popularCidadeMap}"
+								update="cidade"
+								process="@this"
+								partialSubmit="true"/>       		         
+                    </h:selectOneMenu>
+					
+					<h:outputLabel value="Cidade"/>
+					<h:selectOneMenu id="cidade" value="#{pessoaMidiaMB.cidadeSelecionada}">
+					<f:selectItems value="#{cidadeMB.cidadeMap.entrySet()}" var="cid"
+								   itemLabel="#{cid.value}"
+								   itemValue="#{cid.key}"/>
+					</h:selectOneMenu>
+					
+					<h:outputLabel value="Bloco"/>
+					<h:selectOneMenu id="bloco" value="#{pessoaMidiaMB.blocoSelecionado}">
+						<f:selectItems value="#{blocoMB.blocoMap.entrySet()}" var="blo"
+									   itemLabel="#{blo.value}"
+									   itemValue="#{blo.key}"/>
+					</h:selectOneMenu>
+	                
+	            </h:panelGrid>
+	        </p:tab>
+	        <p:tab title="Formação">
+	            <h:panelGrid columns="2" cellpadding="10">
+	                <h:outputLabel value="Grau Instrução"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.grauInstrucao}"/>
+					
+					<h:outputLabel value="Formação"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.formacao}"/>
+					
+					<h:outputLabel value="Idiomas"/>
+					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.idiomas}"/>
+	            </h:panelGrid>
+	        </p:tab>
+	        <p:tab title="Projeto">
+	            <h:panelGrid columns="2" cellpadding="10">
+	            </h:panelGrid>
+	        </p:tab>
+	    </p:tabView>
 		
 		<p:separator/>
 		<p:dataTable var="pessoa" value="#{listarMB.pessoas}">

@@ -30,13 +30,13 @@
 						
 						<h:outputLabel value="Nascimento" />
 						<p:calendar locale="pt" value="#{pessoaMidiaMB.pessoaMidia.dtNasc}" showButtonPanel="true" navigator="true" id="ptCal" showOn="button" />
-						
-						<h:outputLabel value="Sexo"/>
-						<h:selectOneRadio value="#{pessoaMidiaMB.pessoaMidia.sexo}">
-							<f:selectItem itemValue="M" itemLabel="Masculino"/>
+
+				        <p:outputLabel for="sexo" value="Sexo:" />
+				        <p:selectOneRadio id="sexo" value="#{pessoaMidiaMB.pessoaMidia.sexo}"  layout="grid" columns="1">
+				            <f:selectItem itemValue="M" itemLabel="Masculino"/>
 							<f:selectItem itemValue="F" itemLabel="Feminino"/>
-						</h:selectOneRadio>
-						
+				        </p:selectOneRadio>
+
 						<h:outputLabel value="Telefone"/>
 						<p:inputText value="#{pessoaMidiaMB.pessoaMidia.telefone}"/>
 						

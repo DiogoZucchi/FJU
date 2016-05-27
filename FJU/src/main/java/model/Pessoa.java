@@ -48,11 +48,11 @@ public abstract class Pessoa implements Serializable {
 	
 	private String instagram;
 	
-	private String grauInstrucao;
-	
-	private String formacao;
-	
 	private Date dataDoCadastro;
+
+	@ManyToOne
+	@JoinColumn(name="formacao_codigo")
+	private Formacao formacao; 
 	
 	@ManyToOne
 	@JoinColumn(name="estado_uf")
@@ -147,16 +147,10 @@ public abstract class Pessoa implements Serializable {
 	public void setInstagram(String instagram) {
 		this.instagram = instagram;
 	}
-	public String getGrauInstrucao() {
-		return grauInstrucao;
-	}
-	public void setGrauInstrucao(String grauInstrucao) {
-		this.grauInstrucao = grauInstrucao;
-	}
-	public String getFormacao() {
+	public Formacao getFormacao() {
 		return formacao;
 	}
-	public void setFormacao(String formacao) {
+	public void setFormacao(Formacao formacao) {
 		this.formacao = formacao;
 	}
 	public Date getDataDoCadastro() {

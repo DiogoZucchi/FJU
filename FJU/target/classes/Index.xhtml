@@ -27,17 +27,26 @@
 			$("#bt1").click(function(event){
 				$("#bt2").removeClass("btn-primary botao-selecionado");
 				$("#bt3").removeClass("btn-primary botao-selecionado");
+				$("#bt4").removeClass("btn-primary botao-selecionado");
 				$("#bt1").addClass("btn-primary botao-selecionado");
 			});
 			$("#bt2").click(function(event){
 				$("#bt1").removeClass("btn-primary botao-selecionado");
 				$("#bt3").removeClass("btn-primary botao-selecionado");
+				$("#bt4").removeClass("btn-primary botao-selecionado");
 				$("#bt2").addClass("btn-primary botao-selecionado");
 			});
 			$("#bt3").click(function(event){
 				$("#bt1").removeClass("btn-primary botao-selecionado");
 				$("#bt2").removeClass("btn-primary botao-selecionado");
+				$("#bt4").removeClass("btn-primary botao-selecionado");
 				$("#bt3").addClass("btn-primary botao-selecionado");
+			});
+			$("#bt4").click(function(event){
+				$("#bt1").removeClass("btn-primary botao-selecionado");
+				$("#bt2").removeClass("btn-primary botao-selecionado");
+				$("#bt3").removeClass("btn-primary botao-selecionado");
+				$("#bt4").addClass("btn-primary botao-selecionado");
 			});
 		});
 		
@@ -81,6 +90,11 @@
 					    	</h:commandLink>
 					    </div>
 					    <div id="bt3">
+					    	<h:commandLink value="Solicitações" actionListener="#{templateMB.opBloco}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
+					    		<p:ajax update="content"/> 
+					    	</h:commandLink>
+					    </div>
+					    <div id="bt4">
 					    	<h:commandLink value="Bloco" actionListener="#{templateMB.opBloco}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
 					    		<p:ajax update="content"/> 
 					    	</h:commandLink>

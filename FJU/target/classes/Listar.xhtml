@@ -69,16 +69,50 @@
 	            </h:panelGrid>
 	        </p:tab>
 	        <p:tab title="Formação">
-	            <h:panelGrid columns="2" cellpadding="10">
-	                <h:outputLabel value="Grau Instrução"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.grauInstrucao}"/>
-					
-					<h:outputLabel value="Formação"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.formacao}"/>
-					
+               <p:panelGrid columns="4">
+				<h:outputLabel value="Grau de instrução"/>
+                   <h:selectOneMenu id="grauInst" value="#{pessoaMidiaMB.formacaoSelecionada}">
+					<f:selectItem itemValue="1" itemLabel="Ensino Fundamental"/> 
+					<f:selectItem itemValue="2" itemLabel="Ensino Médio"/>
+					<f:selectItem itemValue="3" itemLabel="Ensino Superior"/>
+                   </h:selectOneMenu>
+			
+				<h:selectOneMenu id="situacaoEsc" value="#{pessoaMidiaMB.situacaoEscolaSelecionada}">
+					<f:selectItem itemValue="1" itemLabel="Incompleto"/>
+					<f:selectItem itemValue="2" itemLabel="Cursando"/>
+					<f:selectItem itemValue="3" itemLabel="Completo"/>
+				</h:selectOneMenu>
+				</p:panelGrid>
+				
+				<p:panelGrid columns="4">
+					<h:outputLabel value="Curso"/>
+					<h:selectOneMenu id="curso" value="#{pessoaMidiaMB.cursoSelecionado}">
+					<f:selectItems value="#{formacaoMB.cursoMap.entrySet()}" var="cur"
+								   itemLabel="#{cur.value}"
+								   itemValue="#{cur.key}"/>
+					</h:selectOneMenu>
+					<h:selectOneMenu id="situacaoSup" value="#{pessoaMidiaMB.situacaoSuperiorSelecionada}">
+						<f:selectItem itemValue="1" itemLabel="Incompleto"/>
+						<f:selectItem itemValue="2" itemLabel="Cursando"/>
+						<f:selectItem itemValue="3" itemLabel="Completo"/>
+					</h:selectOneMenu>
+				</p:panelGrid>
+				
+				<p:panelGrid columns="4">
 					<h:outputLabel value="Idiomas"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.idiomas}"/>
-	            </h:panelGrid>
+					<h:selectOneMenu id="idioma" value="#{pessoaMidiaMB.idiomaSelecionado}">
+					<f:selectItems value="#{idiomaMB.idiomaMap.entrySet()}" var="idi"
+								   itemLabel="#{idi.value}"
+								   itemValue="#{idi.key}"/>
+					</h:selectOneMenu>
+					
+					<h:selectOneMenu id="nivelIdioma" value="#{pessoaMidiaMB.nivelIdioma}">
+						<f:selectItem itemValue="0" itemLabel=""/> 
+						<f:selectItem itemValue="1" itemLabel="Básico"/> 
+						<f:selectItem itemValue="2" itemLabel="Intemediário"/>
+						<f:selectItem itemValue="3" itemLabel="Avançado"/>
+					</h:selectOneMenu>
+				</p:panelGrid>	
 	        </p:tab>
 	        <p:tab title="Projeto">
 	            <h:panelGrid columns="2" cellpadding="10">

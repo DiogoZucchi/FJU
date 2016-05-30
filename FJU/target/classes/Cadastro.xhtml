@@ -74,7 +74,7 @@
 									partialSubmit="true"/>		
 						</p:inputText>
 						
-						<h:outputLabel value="*Estado"/>
+						<h:outputLabel value="Estado"/>
 	                    <h:selectOneMenu id="estado" value="#{pessoaMidiaMB.estadoSelecionado}">
 	                        <f:selectItems value="#{estadoMB.estadoMap.entrySet()}" var="est"
 	                                       itemLabel="#{est.value}"
@@ -119,16 +119,58 @@
 			<div id="form-contatos">
 				<h3><b>Formação</b></h3>
 				<p:separator/>
-				<p:panelGrid columns="2">
-					<h:outputLabel value="Grau Instrução"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.grauInstrucao}"/>
-					
-					<h:outputLabel value="Formação"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.formacao}"/>
-					
-					<h:outputLabel value="Idiomas"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.idiomas}"/>
+				
+				<p:panelGrid columns="4">
+					<h:outputLabel value="Grau de instrução"/>
+                    <h:selectOneMenu id="grauInst" value="#{pessoaMidiaMB.formacaoSelecionada}">
+						<f:selectItem itemValue="1" itemLabel="Ensino Fundamental"/> 
+						<f:selectItem itemValue="2" itemLabel="Ensino Médio"/>
+						<f:selectItem itemValue="3" itemLabel="Ensino Superior"/>
+                    </h:selectOneMenu>
+				
+					<h:selectOneMenu id="situacaoEsc" value="#{pessoaMidiaMB.situacaoEscolaSelecionada}">
+						<f:selectItem itemValue="1" itemLabel="Incompleto"/>
+						<f:selectItem itemValue="2" itemLabel="Cursando"/>
+						<f:selectItem itemValue="3" itemLabel="Completo"/>
+					</h:selectOneMenu>
 				</p:panelGrid>
+				
+				<p:panelGrid columns="4">
+					<h:outputLabel value="Curso"/>
+					<h:selectOneMenu id="curso" value="#{pessoaMidiaMB.cursoSelecionado}">
+					<f:selectItems value="#{formacaoMB.cursoMap.entrySet()}" var="cur"
+								   itemLabel="#{cur.value}"
+								   itemValue="#{cur.key}"/>
+					</h:selectOneMenu>
+					<h:selectOneMenu id="situacaoSup" value="#{pessoaMidiaMB.situacaoSuperiorSelecionada}">
+						<f:selectItem itemValue="1" itemLabel="Incompleto"/>
+						<f:selectItem itemValue="2" itemLabel="Cursando"/>
+						<f:selectItem itemValue="3" itemLabel="Completo"/>
+					</h:selectOneMenu>
+				</p:panelGrid>
+				
+				<p:panelGrid columns="4">
+					<h:outputLabel value="Idiomas"/>
+					<h:selectOneMenu id="idioma" value="#{pessoaMidiaMB.idiomaSelecionado}">
+					<f:selectItems value="#{idiomaMB.idiomaMap.entrySet()}" var="idi"
+								   itemLabel="#{idi.value}"
+								   itemValue="#{idi.key}"/>
+					</h:selectOneMenu>
+					
+					<h:selectOneMenu id="nivelIdioma" value="#{pessoaMidiaMB.nivelIdioma}">
+						<f:selectItem itemValue="1" itemLabel="Básico"/> 
+						<f:selectItem itemValue="2" itemLabel="Intemediário"/>
+						<f:selectItem itemValue="3" itemLabel="Avançado"/>
+					</h:selectOneMenu>
+					
+					<h:commandButton id="btnTeste" value="+">
+						<p:ajax event="change"
+									update="@this"
+									process="@this"
+									partialSubmit="true"/>
+					</h:commandButton>
+					
+				</p:panelGrid>					
 			</div>	
 		
 			<div id="form-projeto">
@@ -142,7 +184,12 @@
 					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.equipamentos}"/>
 					
 					<h:outputLabel value="Departamento"/>
-					<p:inputText value="#{pessoaMidiaMB.pessoaMidia.departamento}"/>	
+					<h:selectOneMenu id="depart" value="#{pessoaMidiaMB.departMidiaSelecionada}">
+						<f:selectItem itemValue="1" itemLabel="Fotógrafo(a)"/> 
+						<f:selectItem itemValue="2" itemLabel="Redator(a)"/>
+						<f:selectItem itemValue="3" itemLabel="Editor(a) audiovisual"/>
+						<f:selectItem itemValue="4" itemLabel="Designer"/>
+					</h:selectOneMenu>
 					
 				</p:panelGrid>
 			</div>	

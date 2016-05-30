@@ -14,7 +14,7 @@ public class Idioma {
 	
 	private int nivel;
 	
-	private String descricao;
+	private int descricao;
 	
 	//GET - SET.
 	public int getCodigo() {
@@ -29,10 +29,10 @@ public class Idioma {
 	public void setNivel(int nivel) {
 		this.nivel = nivel;
 	}
-	public String getDescricao() {
+	public int getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(String descricao) {
+	public void setDescricao(int descricao) {
 		this.descricao = descricao;
 	}
 }

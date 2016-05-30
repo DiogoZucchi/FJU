@@ -10,27 +10,34 @@ public class Formacao {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int codigo;
-	private String grauEscolaridade;
-	private String situacao;
-	private String faseAtual;
+	private int curso;
+	private int grauEscolaridade;
+	private int EscolaSituacao;
+	private int SuperiorSituacao;
 	
 	//GET - SET.
-	public String getGrauEscolaridade() {
+	public int getCurso() {
+		return curso;
+	}
+	public void setCurso(int curso) {
+		this.curso = curso;
+	}
+	public int getGrauEscolaridade() {
 		return grauEscolaridade;
 	}
-	public void setGrauEscolaridade(String grauEscolaridade) {
+	public void setGrauEscolaridade(int grauEscolaridade) {
 		this.grauEscolaridade = grauEscolaridade;
 	}
-	public String getSituacao() {
-		return situacao;
+	public int getEscolaSituacao() {
+		return EscolaSituacao;
 	}
-	public void setSituacao(String situacao) {
-		this.situacao = situacao;
+	public void setEscolaSituacao(int escolaSituacao) {
+		EscolaSituacao = escolaSituacao;
 	}
-	public String getFaseAtual() {
-		return faseAtual;
+	public int getSuperiorSituacao() {
+		return SuperiorSituacao;
 	}
-	public void setFaseAtual(String faseAtual) {
-		this.faseAtual = faseAtual;
+	public void setSuperiorSituacao(int superiorSituacao) {
+		SuperiorSituacao = superiorSituacao;
 	}
 }

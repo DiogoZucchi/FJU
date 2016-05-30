@@ -22,7 +22,7 @@ public class PessoaMidia extends Pessoa{
 	@JoinTable(name="midia_tem_equipamentos", joinColumns= @JoinColumn(name="pessoa_codigo"), inverseJoinColumns= @JoinColumn(name="equipamento_codigo"))
 	private List<Equipamento> equipamentos;
 	
-	private String departamento;
+	private int departamento;
 
 	//GET - SET.
 	public List<Curso> getCursos() {
@@ -37,10 +37,10 @@ public class PessoaMidia extends Pessoa{
 	public void setEquipamentos(List<Equipamento> equipamentos) {
 		this.equipamentos = equipamentos;
 	}
-	public String getDepartamento() {
+	public int getDepartamento() {
 		return departamento;
 	}
-	public void setDepartamento(String departamento) {
+	public void setDepartamento(int departamento) {
 		this.departamento = departamento;
 	}
 }

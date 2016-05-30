@@ -9,86 +9,80 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 
-import model.Usuario;
+import model.Formacao;
 
-public class UsuarioDao {
+public class FormacaoDao {
+private EntityManager manager;
 	
-	private EntityManager manager;
-	
-	public void inserir(Usuario usuario) {
+	public void inserir(Formacao formacao) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 	
 		try {
 			manager.getTransaction().begin();
-			manager.persist(usuario);
+			manager.persist(formacao);
 			manager.getTransaction().commit();
 		} finally {
 			manager.close();
 		}
 	}
 	
-	public void remover(Usuario usuario){
+	public void remover(Formacao formacao){
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
 			manager.getTransaction().begin();
-			manager.remove(usuario);
+			manager.remove(formacao);
 			manager.getTransaction().commit();
 		} finally {
 			manager.close();
 		}	
 	}
 	
-	public void alterar(Usuario usuario) {
+	public void alterar(Formacao formacao) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
 			manager.getTransaction().begin();
-			manager.merge(usuario);
+			manager.merge(formacao);
 			manager.getTransaction().commit();
 		} finally {
 			manager.close();
 		}
 	}
 	
-	public Usuario listarUm(Usuario u) {
+	public Formacao listarUm(int codigo) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		try {
-
 			CriteriaBuilder cb = manager.getCriteriaBuilder();
-			CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);
-			Root<Usuario> root = cq.from(Usuario.class);
+			CriteriaQuery<Formacao> cq = cb.createQuery(Formacao.class);
+			Root<Formacao> root = cq.from(Formacao.class);
 			cq.select(root);
 			
-		    Path<String> login = root.get("login");
-		    cq.where(cb.and(cb.equal(login, u.getLogin())));
+		    Path<String> restricaoCodigo = root.get("codigo");
+		    cq.where(cb.and(cb.equal(restricaoCodigo, codigo)));
 		    
-		    Path<String> password = root.get("password");
-		    cq.where(cb.and(cb.equal(password, u.getPassword())));
-			 
-			TypedQuery<Usuario> query = manager.createQuery(cq);
+			TypedQuery<Formacao> query = manager.createQuery(cq);
 			
 			if(query.getResultList().isEmpty())
 				return null;
-			else
-				return query.getResultList().get(0);
+			return query.getResultList().get(0);
 		} finally {
 			manager.close();
 		}
 	}
 	
-	public ArrayList<Usuario> listarTodos() {
+	public ArrayList<Formacao> listarTodos() {
 		manager = EntityManagerProvider.getEntityManagerFactory();
 		
 		try {
 			CriteriaBuilder cb = manager.getCriteriaBuilder();
-			CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);
-			Root<Usuario> root = cq.from(Usuario.class);
+			CriteriaQuery<Formacao> cq = cb.createQuery(Formacao.class);
+			Root<Formacao> root = cq.from(Formacao.class);
 			cq.select(root);
 			
-			TypedQuery<Usuario> query = manager.createQuery(cq);
+			TypedQuery<Formacao> query = manager.createQuery(cq);
 			
-			return (ArrayList<Usuario>) query.getResultList();
+			return (ArrayList<Formacao>) query.getResultList();
 		} finally {
 			manager.close();
 		}

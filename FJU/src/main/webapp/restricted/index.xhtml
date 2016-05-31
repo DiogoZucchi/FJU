@@ -6,9 +6,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"	media="all" />
-	<link rel="stylesheet" href="css/bootstrap-responsive.css" type="text/css"	media="all" />
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="../css/bootstrap-responsive.css" type="text/css"	media="all" />
+	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all"/>
 	
     <style type="text/css">
        .ui-layout, .ui-layout-doc, .ui-layout-unit, .ui-layout-wrap, .ui-layout-bd, .ui-layout-hd{
@@ -66,14 +66,14 @@
 	<h:form>    
 	 	<p:menubar style="background:#363636" styleClass="navbar navbar-fixed-top">
 	        <f:facet name="options">
-	            <p:menuButton value="#{usuarioMB.usuario.login}" style="margin-right:10px; margin-top:10px;">
-			        <p:menuitem value="Sair" update="messages" icon="ui-icon-arrowrefresh-1-w" action="#{usuarioMB.doLogout}"/>
+	            <p:menuButton value="#{usuarioMB.usuario.login}" style="margin-right:10px; margin-top:10px;" styleClass="a-frente">
+			        <p:menuitem value="Sair" update="messages" icon="ui-icon-arrowrefresh-1-w" action="#{usuarioMB.doLogout}" styleClass="a-frente"/>
 			    </p:menuButton>
 	        </f:facet>
 	    </p:menubar>
     </h:form>
     
-	<p:commandLink value="FJU" style="font-size: 25px;" styleClass="btn btn-block texto span1" action="Index"/>    
+	<p:commandLink value="FJU" style="font-size: 25px;" styleClass="btn btn-block texto span1" action="/restricted/index.xhtml"/>    
     
 	<div class="container-fluid" style="height: 100%">
   		<div class="row-fluid" style="height: 100%">
@@ -93,7 +93,7 @@
 					    		<p:ajax update="content"/> 
 					    	</h:commandLink>
 					    </div>
-					    <div id="bt3">
+					    <div id="bt3"> 
 					    	<h:commandLink value="Solicitações" actionListener="#{templateMB.opBloco}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
 					    		<p:ajax update="content"/> 
 					    	</h:commandLink>
@@ -101,7 +101,7 @@
 					    <div id="bt4">
 					    	<h:commandLink value="Bloco" actionListener="#{templateMB.opBloco}" styleClass="btn btn-lg btn-block " style="border-radius:0px;">
 					    		<p:ajax update="content"/> 
-					    	</h:commandLink>
+					    	</h:commandLink> 
 					    </div>
 				    </div>
 				    

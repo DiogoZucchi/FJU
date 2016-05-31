@@ -10,13 +10,13 @@ public class TemplateMB {
 	private String opcaoTemplate;
 	
 	public void opCadastro(){
-		setOpcaoTemplate("Cadastro.xhtml");
+		setOpcaoTemplate("/restricted/cadastro.xhtml");
 	}
 	public void opListar(){
-		setOpcaoTemplate("Listar.xhtml");
+		setOpcaoTemplate("/restricted/listar.xhtml");
 	}
 	public void opBloco(){
-		setOpcaoTemplate("Bloco.xhtml");
+		setOpcaoTemplate("/restricted/bloco.xhtml");
 	}
 	
 	public String getOpcaoTemplate() {

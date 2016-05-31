@@ -81,3 +81,6 @@ li: hover {
 	color: white;
 	text-shadow: none;
 }
+.a-frente {
+	z-index: 1031;
+}

@@ -29,11 +29,13 @@ public class LoginFilter implements Filter {
 		// variável loggedIn seja false, assim saberemos que
 		// o usuário não está logado
 		if (usuarioMB == null || !usuarioMB.isLogado()) {
+			System.out.println("NÃO");
 			String contextPath = ((HttpServletRequest) request).getContextPath();
 			// Redirecionamos o usuário imediatamente
 			// para a página de login.xhtml
-			((HttpServletResponse) response).sendRedirect(contextPath + "/login/login.xhtml");
+			((HttpServletResponse) response).sendRedirect(contextPath + "/login.xhtml");
 		} else {
+			System.out.println("SIM");
 			// Caso ele esteja logado, apenas deixamos
 			// que o fluxo continue
 			chain.doFilter(request, response);

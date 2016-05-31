@@ -18,7 +18,7 @@ public class CidadeDao {
 	
 	public void inserir(Cidade cidade) {
 		manager = EntityManagerProvider.getEntityManagerFactory();
-	
+		
 		try {
 			manager.getTransaction().begin();
 			manager.persist(cidade);

@@ -1,7 +1,5 @@
 package controller;
 
-import java.io.IOException;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -24,21 +22,16 @@ public class UsuarioMB {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuário não encontrado!", "Erro no Login!"));
 			return null;
 		} else {
-			// try {
-			System.out.println("Entro");
+			//FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put(usuario.getLogin(), usuario);
 			isLogado = true;
-			return "/Index.xhtml?faces-redirect=true";
-			// FacesContext.getCurrentInstance().getExternalContext().redirect("Index.xhtml");
-			/*
-			 * } catch (IOException e) { e.printStackTrace(); } return null;
-			 */
+			return "/restricted/index.xhtml?faces-redirect=true";
 		}
 	}
 	
 	public String doLogout() {
 		usuario = null;
 		isLogado = false;
-		return "/Login.xhtml?faces-redirect=true";
+		return "/login.xhtml?faces-redirect=true";
 	}
 
 	public Usuario getUsuario() {

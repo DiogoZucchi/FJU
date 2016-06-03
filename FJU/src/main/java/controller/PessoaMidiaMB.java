@@ -29,8 +29,6 @@ public class PessoaMidiaMB {
 	private int nivelIdioma;
 	private int departMidiaSelecionada;
 	private int cursoSelecionado;
-	private String estadoSelecionado;
-	private String cidadeSelecionada;
 	private String sexoSelecionado;
 	
 	public void buscaLogradouro() {
@@ -46,10 +44,10 @@ public class PessoaMidiaMB {
                 //int resultado = cepWebService.getResultado();
                 
                 //ESTADO.
-                setEstadoSelecionado(siglaEstado);
+                EstadoMB.estadoSelected = siglaEstado;
                 
                 //CIDADE.
-                setCidadeSelecionada(nomeCidade);
+                CidadeMB.cidadeSelected = nomeCidade;
                 
                 //ENDEREÇO.
                 pessoaMidia.setEndereco(endereco);
@@ -78,7 +76,7 @@ public class PessoaMidiaMB {
 		pessoaMidia.setCep(cep);
 		//INSERT ESTADO.
 		EstadoDao estadoDao = new EstadoDao();
-		Estado estado = estadoDao.listarUm(estadoSelecionado);
+		Estado estado = estadoDao.listarUm(EstadoMB.estadoSelected);
 		pessoaMidia.setEstado(estado);
 		//*************
 		//INSERT BLOCO.
@@ -87,7 +85,7 @@ public class PessoaMidiaMB {
 		//**************
 		//INSERT CIDADE.
 		CidadeDao cidadeDao = new CidadeDao();
-		pessoaMidia.setCidade(cidadeDao.listarUm(cidadeSelecionada, estado));
+		pessoaMidia.setCidade(cidadeDao.listarUm(CidadeMB.cidadeSelected, estado));
 		//**************
 		//DEPARTAMENTO
 		pessoaMidia.setDepartamento(departMidiaSelecionada);
@@ -125,16 +123,6 @@ public class PessoaMidiaMB {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
-	public String getEstadoSelecionado() {
-		BlocoMB.estadoSelected = estadoSelecionado;
-		CidadeMB.estadoSelected = estadoSelecionado;
-		return estadoSelecionado;
-	}
-	public void setEstadoSelecionado(String estadoSelecionado) {
-		this.estadoSelecionado = estadoSelecionado;
-		BlocoMB.estadoSelected = this.estadoSelecionado;
-		CidadeMB.estadoSelected = this.estadoSelecionado;
-	}
 	public String getSexoSelecionado() {
 		return sexoSelecionado;
 	}
@@ -152,12 +140,6 @@ public class PessoaMidiaMB {
 	}
 	public void setBlocoSelecionado(int blocoSelecionado) {
 		this.blocoSelecionado = blocoSelecionado;
-	}
-	public String getCidadeSelecionada() {
-		return cidadeSelecionada;
-	}
-	public void setCidadeSelecionada(String cidadeSelecionada) {
-		this.cidadeSelecionada = cidadeSelecionada;
 	}
 	public int getFormacaoSelecionada() {
 		return formacaoSelecionada;

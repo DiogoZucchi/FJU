@@ -17,16 +17,11 @@ public class Cidade {
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name="bloco_codigo")
-	private Bloco bloco;
-	
-	@ManyToOne
 	@JoinColumn(name="estado_uf")
 	private Estado estado;
 	
 	//CONSTRUTOR.
 	public Cidade() {
-		bloco = new Bloco();
 		estado = new Estado();
 	}
 
@@ -43,12 +38,6 @@ public class Cidade {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Bloco getBloco() {
-		return bloco;
-	}
-	public void setBloco(Bloco bloco) {
-		this.bloco = bloco;
-	}
 	public Estado getEstado() {
 		return estado;
 	}
@@ -57,6 +46,6 @@ public class Cidade {
 	}
 	@Override
 	public String toString() {
-		return "Cidade [codigo=" + codigo + ", nome=" + nome + ", bloco=" + bloco + ", estado=" + estado + "]";
+		return "Cidade [codigo=" + codigo + ", nome=" + nome + ", estado=" + estado + "]";
 	}
 }

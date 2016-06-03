@@ -61,15 +61,15 @@ public class CidadeDao {
 			cq.select(root);
 			
 		    Path<String> restricaoNome = root.get("nome");
-		    cq.where(cb.and(cb.equal(restricaoNome, nome)));
-		    
 		    Path<String> restricaoUF = root.get("estado");
-		    cq.where(cb.and(cb.equal(restricaoUF, estado)));
 		    
-			TypedQuery<Cidade> query = manager.createQuery(cq);
+		    cq.where(cb.and(cb.equal(restricaoNome, nome)),cb.and(cb.equal(restricaoUF, estado)));
+
+		    TypedQuery<Cidade> query = manager.createQuery(cq);
 			
 			if(query.getResultList().isEmpty())
 				return null;
+			
 			return query.getResultList().get(0);
 		} finally {
 			manager.close();

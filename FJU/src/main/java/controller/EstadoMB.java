@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="estadoMB")
 public class EstadoMB {
 	public Map<String, String> estadoMap;
+	static String estadoSelected;
 	
 	public EstadoMB() {
 		popularEstadoMap();
@@ -45,10 +46,19 @@ public class EstadoMB {
 	}
 	
 	public Map<String, String> getEstadoMap() {
+		estadoSelected = estadoMap.get("AC");
 		return estadoMap;
 	}
-
 	public void setEstadoMap(Map<String, String> estadoMap) {
 		this.estadoMap = estadoMap;
 	}
+
+	public String getEstadoSelected() {
+		return estadoSelected;
+	}
+
+	public void setEstadoSelected(String estadoSelected) {
+		EstadoMB.estadoSelected = estadoSelected;
+	}
+	
 }
